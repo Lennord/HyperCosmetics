@@ -13,6 +13,7 @@ on load:
 		set yaml value "item-join.drop" from "config" to false
 		set yaml value "item-join.inventory-change-slot" from "config" to false
 		set yaml value "item-gadgets.slot" from "config" to 6
+		set yaml value "cosmetics.gadgets.clear-join.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.firework.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" to 7
@@ -20,6 +21,7 @@ on load:
 		set yaml value "cosmetics.gadgets.lightning.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.rocket.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.rocket.height-ylocation" from "config" to 175
+		set yaml value "cosmetics.suits.clear-join.stats" from "config" to true
 		set yaml value "cosmetics.suits.leather-armor.stats" from "config" to true
 		set yaml value "cosmetics.suits.chainmail-armor.stats" from "config" to true
 		set yaml value "cosmetics.suits.iron-armor.stats" from "config" to true
@@ -403,6 +405,22 @@ on join:
 			if player has permission "hypercosmetics.itemjoin" or "hypercosmetics.*":
 				set slot yaml value "item-join.slot" from "config" of player to yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)"
 				stop
+
+on join:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "cosmetics.gadgets.clear-join.stats" from "config" = true:
+		set slot yaml value "item-gadgets.slot" from "config" of player to air
+		set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+		stop
+
+on join:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "cosmetics.suits.clear-join.stats" from "config" = true:
+		set player's helmet to air
+		set player's chestplate to air
+		set player's leggings to air
+		set player's boots to air
+		stop
 
 on right click:
 	load "plugins/HyperCosmetics/config.yml"
