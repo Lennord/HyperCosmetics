@@ -13,6 +13,7 @@ on load:
 		set yaml value "item-join.drop" from "config" to false
 		set yaml value "item-join.inventory-change-slot" from "config" to false
 		set yaml value "item-gadgets.slot" from "config" to 6
+		set yaml value "anti-damage.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.clear-join.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.firework.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" to true
@@ -214,7 +215,7 @@ on inventory click:
 				load "plugins/HyperCosmetics/config.yml"
 				set slot yaml value "item-gadgets.slot" from "config" of player to air
 				set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
-				send action bar "&cYou have been cleared all gadgets." to player
+				send action bar "&cYou have cleared all gadgets." to player
 				stop
 			if name of event-slot = "&fFirework":
 				close player's inventory
@@ -304,7 +305,7 @@ on inventory click:
 				set player's chestplate to air
 				set player's leggings to air
 				set player's boots to air
-				send action bar "&cYou have been cleared all suits." to player
+				send action bar "&cYou have cleared all suits." to player
 				stop
 			if name of event-slot = "&fLeather Armor":
 				if player doesn't have permission "hypercosmetics.openmenu.suits.give.leatherarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
@@ -396,6 +397,13 @@ on inventory click:
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
 						stop
+
+on damage:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "anti-damage.stats" from "config" = true:
+		if victim = player:
+			cancel event
+			stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
@@ -969,7 +977,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 							if yaml value "language" from "config" = "English":
 								set slot yaml value "item-gadgets.slot" from "config" of player to air
 								set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
-								send action bar "&cYou have been cleared all gadgets." to player
+								send action bar "&cYou have cleared all gadgets." to player
 								stop
 						else:
 							if player doesn't have permission "hypercosmetics.hgadgets.clear.others" or "hypercosmetics.*":
@@ -1225,7 +1233,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 								set player's chestplate to air
 								set player's leggings to air
 								set player's boots to air
-								send action bar "&cYou have been cleared all suits." to player
+								send action bar "&cYou have cleared all suits." to player
 								stop
 						else:
 							if player doesn't have permission "hypercosmetics.hsuits.clear.others" or "hypercosmetics.*":
