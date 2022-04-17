@@ -18,6 +18,8 @@ on load:
 		set yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" to 7
 		set yaml value "cosmetics.gadgets.snowball.stats" from "config" to true
 		set yaml value "cosmetics.gadgets.lightning.stats" from "config" to true
+		set yaml value "cosmetics.gadgets.rocket.stats" from "config" to true
+		set yaml value "cosmetics.gadgets.rocket.height-ylocation" from "config" to 175
 		save yaml "config"
 		unload yaml "config"
 		stop
@@ -83,6 +85,10 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 				set slot 13 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to blaze rod named "&fLightning" with lore "", "&f• &7Make Zeus' storm appear towards your target.", "" and "&f• &6Right-Click for give this gadgets."
 			else:
 				set slot 13 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
+			if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+				set slot 14 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to feather named "&fRocket" with lore "", "&f• &7Take off to the most beautiful planet in the", "&7world.", "" and "&f• &6Right-Click for give this gadgets."
+			else:
+				set slot 14 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
 			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to light blue stained glass pane
 			set slot 45 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to arrow named "&6« &cPage Back"
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
@@ -116,7 +122,7 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 function HGadgetsCMDList(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
 	if yaml value "language" from "config" = "English":
-		send "&6Liste of all gadgets: &cFirework&7, &cBow-Teleport&7, &cSnowball &7and &cLightning" to {_s}
+		send "&6Liste of all gadgets: &cFirework&7, &cBow-Teleport&7, &cSnowball&7, &cLightning &7and &cRocket" to {_s}
 		stop
 
 on inventory click:
@@ -188,6 +194,16 @@ on inventory click:
 				else:
 					send "&4| &8x &cThis gadget has been disabled by the server." to player
 					stop
+			if name of event-slot = "&fRocket":
+				close player's inventory
+				load "plugins/HyperCosmetics/config.yml"
+				if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+					set slot yaml value "item-gadgets.slot" from "config" of player to feather named "&c&l↪ &7Rocket (&eRight-Click&7)"
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					stop
+				else:
+					send "&4| &8x &cThis gadget has been disabled by the server." to player
+					stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
@@ -200,28 +216,40 @@ on join:
 
 on right click:
 	load "plugins/HyperCosmetics/config.yml"
-	if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
-		cancel event
-		HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-	if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
-		cancel event
-		if chance of 50%:
-			launch ball firework colored red, green and white at player's location timed 1
+	if yaml value "language" from "config" = "English":
+		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+			cancel event
+			HyperCosmeticsOpenMenu(player, "OpenMenuMain")
+		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+			cancel event
+			if chance of 50%:
+				launch ball firework colored red, green and white at player's location timed 1
+				stop
+			if chance of 50%:
+				launch burst firework colored purple fading to blue at player's location timed 1
+				stop
+		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+			repair slot yaml value "item-gadgets.slot" from "config" of player
+			set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
 			stop
-		if chance of 50%:
-			launch burst firework colored purple fading to blue at player's location timed 1
+		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+			cancel event
+			shoot snowball
+		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+			cancel event
+			strike lightning at player's location
 			stop
-	if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
-		repair slot yaml value "item-gadgets.slot" from "config" of player
-		set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
-		stop
-	if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
-		cancel event
-		shoot snowball
-	if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
-		cancel event
-		strike lightning at player's location
-		stop
+		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+			cancel event
+			push player upwards with speed 0.5
+			stop
+
+on player move:
+	if player's tool = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+		load "plugins/HyperCosmetics/config.yml"
+		if y-location of player >= yaml value "cosmetics.gadgets.rocket.height-ylocation" from "config":
+			teleport player to spawn of player's world
+			stop
 
 on left click:
 	load "plugins/HyperCosmetics/config.yml"
@@ -242,6 +270,9 @@ on left click:
 			cancel event
 			stop
 		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 			cancel event
 			stop
 
@@ -276,6 +307,9 @@ on inventory click:
 		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 			cancel event
 			stop
+		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+			cancel event
+			stop
 
 on drop:
 	load "plugins/HyperCosmetics/config.yml"
@@ -299,6 +333,9 @@ on drop:
 		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 			cancel event
 			stop
+		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+			cancel event
+			stop
 
 command /hypercosmetics [<text>] [<text>]:
 	aliases: hypercosmetics:hypercosmetics, hc, hypercosmetics:hc
@@ -319,7 +356,7 @@ command /hypercosmetics [<text>] [<text>]:
 					send "&8| &fAuthor of skript: &calexisl315 (Alias: Lennord)" to sender
 					send "&8| &fDescription of skript: &cThis skript allows you to implement many types of cosmetics." to sender
 					send "&8| &fVersion of skript: &c0.0.1" to sender
-					send "&8| &fPlugin requirements: &cSkript &7and &cSkript-YAML" to sender
+					send "&8| &fPlugin requirements: &cSkript, &7SkBee &7and &cSkript-YAML" to sender
 					send "&8| &fAll languages of skript: &cEnglish" to sender
 					send "" to sender
 					stop
@@ -363,7 +400,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 						if arg 2 isn't set:
 							HyperCosmeticsHelp(player, "HGadgetsCMD")
 						else:
-							if arg 2 != "firework" or "bow-teleport" or "snowball" or "lightning":
+							if arg 2 != "firework" or "bow-teleport" or "snowball" or "lightning" or "rocket":
 								HGadgetsCMDList(player)
 							else:
 								if arg 3 isn't set:
@@ -423,6 +460,20 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 												else:
 													send "&4| &8x &cThis gadget has been disabled by the server." to player
 													stop
+									if arg 2 = "rocket":
+										if player doesn't have permission "hypercosmetics.hgadgets.give.rocket" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+													set slot yaml value "item-gadgets.slot" from "config" of player to feather named "&c&l↪ &7Rocket (&eRight-Click&7)"
+													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+													send action bar "&7You have gived the gadget &6Rocket&7." to player
+													stop
+												else:
+													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													stop
 								else:
 									if player doesn't have permission "hypercosmetics.hgadgets.give.others" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
@@ -470,6 +521,17 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Lightning for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														stop
+											if arg 2 = "rocket":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+														set slot yaml value "item-gadgets.slot" from "config" of player to feather named "&c&l↪ &7Rocket (&eRight-Click&7)"
+														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+														send action bar "&7You have gived the gadget &6Rocket&7." to player
 														stop
 													else:
 														send "&4| &8x &cThis gadget has been disabled by the server." to player
