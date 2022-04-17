@@ -971,6 +971,12 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 		if sender = console:
 			HyperCosmeticsNoCommandConsole(console)
 
+on command "/hgadgets" or "/hypercosmetics:hgadgets":
+	if sender = player:
+		if player doesn't have permission "hypercosmetics.hgadgets" or "hypercosmetics.*":
+			cancel event
+			HyperCosmeticsNoPermission(player)
+
 command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hsuits
 	description: &fHyperCosmetics command /hsuits.
