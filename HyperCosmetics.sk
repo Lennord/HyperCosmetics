@@ -1,0 +1,511 @@
+#   . HyperCosmetics (Skript), Developped by alexisl315 (Alias: Lennord).
+#   . This skript allows you to implement many types of cosmetics.
+
+#   --> Code:
+
+on load:
+	if yaml file "plugins/HyperCosmetics/config.yml" doesn't exist:
+		load "plugins/HyperCosmetics/config.yml"
+		set yaml value "language" from "config" to "English"
+		set yaml value "item-join.stats" from "config" to true
+		set yaml value "item-join.slot" from "config" to 4
+		set yaml value "item-join.itemtype" from "config" to ender chest
+		set yaml value "item-join.drop" from "config" to false
+		set yaml value "item-join.inventory-change-slot" from "config" to false
+		set yaml value "item-gadgets.slot" from "config" to 6
+		set yaml value "cosmetics.gadgets.firework.stats" from "config" to true
+		set yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" to true
+		set yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" to 7
+		set yaml value "cosmetics.gadgets.snowball.stats" from "config" to true
+		set yaml value "cosmetics.gadgets.lightning.stats" from "config" to true
+		save yaml "config"
+		unload yaml "config"
+		stop
+	else:
+		load "plugins/HyperCosmetics/config.yml"
+		if yaml value "language" from "config" != "English":
+			set yaml value "language" from "config" to "English"
+		save yaml "config"
+		unload yaml "config"
+		stop
+
+on load:
+	send "&7[&bHyperCosmetics&7] &8x &2Enabled" to console
+	stop
+
+on unload:
+	send "&7[&bHyperCosmetics&7] &8x &cDisabled" to console
+	stop
+
+function HyperCosmeticsNoPermission(s: sender):
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		send "&4| &8x &cYou have not permission to use this command." to {_s}
+		stop
+
+function HyperCosmeticsNoCommandConsole(s: sender):
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		send "&4| &8x &cYou must be a player to use this command." to {_s}
+		stop
+
+function HGadgetsCMDOfflinePlayer(s: sender):
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		send "&4| &8x &cThe player is offline." to {_s}
+		stop
+
+function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		if {_typemenu} = "OpenMenuMain":
+			set metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to chest inventory with 6 rows named "Main Menu"
+			set slot 13 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to bow named "&fGadgets"
+			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to light blue stained glass pane
+			set slot 49 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
+			open (metadata tag "HyperCosmeticsOpenMenuMain" of {_s}) to {_s}
+			stop
+		if {_typemenu} = "OpenMenuGadgetsMain":
+			set metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to chest inventory with 6 rows named "Gadgets Menu"
+			if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+				set slot 10 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to firework named "&fFirework" with lore "", "&f• &7Celebrate the good news you've had for", "&7the day by using fireworks.", "" and "&f• &6Right-Click for give this gadgets."
+			else:
+				set slot 10 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
+			if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+				set slot 11 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to bow named "&fBow Teleport" with lore "", "&f• &7Shoot to teleport to the arrow landing.", "" and "&f• &6Right-Click for give this gadgets."
+			else:
+				set slot 11 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
+			if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+				set slot 12 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to snowball named "&fSnowball" with lore "", "&f• &7Send your most beautiful snowballs towards", "&7the people you want to attack.", "" and "&f• &6Right-Click for give this gadgets."
+			else:
+				set slot 12 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
+			if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+				set slot 13 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to blaze rod named "&fLightning" with lore "", "&f• &7Make Zeus' storm appear towards your target.", "" and "&f• &6Right-Click for give this gadgets."
+			else:
+				set slot 13 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
+			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to light blue stained glass pane
+			set slot 45 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to arrow named "&6« &cPage Back"
+			set slot 49 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
+			set slot 53 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to redstone block named "&cClear all gadgets"
+			open (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s}) to {_s}
+			stop
+
+function HyperCosmeticsHelp(s: sender, typehelp: text):
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		if {_typehelp} = "HyperCosmeticsCMD":
+			send "" to {_s}
+			send "&8| &8x &6Help:" to {_s}
+			send "" to {_s}
+			send "&8| &f/hypercosmetics &binfo &8x &7Seen informations of this skript." to {_s}
+			send "&8| &f/hypercosmetics &breload &8x &7Reload this skript." to {_s}
+			send "&8| &f/hypercosmetics &bmenu &8x &7Open menu." to {_s}
+			send "" to {_s}
+			stop
+		if {_typehelp} = "HGadgetsCMD":
+			send "" to {_s}
+			send "&8| &8x &6Help:" to {_s}
+			send "" to {_s}
+			send "&8| &f/hgadget &bmenu &8x &7Open menu gadgets." to {_s}
+			send "&8| &f/hgadget &bgive &7[&cname of gadgets&7] &7[&7OPTION: &cname of player&7] &8x &7Open menu gadgets." to {_s}
+			send "&8| &f/hgadget &bclear &7[&7OPTION: &cname of player&7] &8x &7Open menu gadgets." to {_s}
+			send "&8| &f/hgadget &blist &8x &7List of all gadgets." to {_s}
+			send "" to {_s}
+			stop
+
+function HGadgetsCMDList(s: sender):
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		send "&6Liste of all gadgets: &cFirework&7, &cBow-Teleport&7, &cSnowball &7and &cLightning" to {_s}
+		stop
+
+on inventory click:
+	event-inventory = (metadata tag "HyperCosmeticsOpenMenuMain" of player):
+		cancel event
+		load "plugins/HyperCosmetics/config.yml"
+		if yaml value "language" from "config" = "English":
+			if name of event-slot = "&cClose the menu":
+				close player's inventory
+				stop
+			if name of event-slot = "&fGadgets":
+				HyperCosmeticsOpenMenu(player, "OpenMenuGadgetsMain")
+	event-inventory = (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of player):
+		cancel event
+		load "plugins/HyperCosmetics/config.yml"
+		if yaml value "language" from "config" = "English":
+			if name of event-slot = "&cClose the menu":
+				close player's inventory
+				stop
+			if name of event-slot = "&6« &cPage Back":
+				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
+			if name of event-slot = "&cClear all gadgets":
+				close player's inventory
+				load "plugins/HyperCosmetics/config.yml"
+				set slot yaml value "item-gadgets.slot" from "config" of player to air
+				set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+				send action bar "&cYou have been cleared all gadgets." to player
+				stop
+			if name of event-slot = "&fFirework":
+				close player's inventory
+				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.firework" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "":
+					HyperCosmeticsNoPermission(player)
+				else:
+					load "plugins/HyperCosmetics/config.yml"
+					if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+						set slot yaml value "item-gadgets.slot" from "config" of player to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
+						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+						stop
+					else:
+						send "&4| &8x &cThis gadget has been disabled by the server." to player
+						stop
+			if name of event-slot = "&fBow Teleport":
+				close player's inventory
+				load "plugins/HyperCosmetics/config.yml"
+				if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+					set slot yaml value "item-gadgets.slot" from "config" of player to bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)"
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
+					stop
+				else:
+					send "&4| &8x &cThis gadget has been disabled by the server." to player
+					stop
+			if name of event-slot = "&fSnowball":
+				close player's inventory
+				load "plugins/HyperCosmetics/config.yml"
+				if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+					set slot yaml value "item-gadgets.slot" from "config" of player to snowball named "&c&l↪ &7Snowball (&eRight-Click&7)"
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					stop
+				else:
+					send "&4| &8x &cThis gadget has been disabled by the server." to player
+					stop
+			if name of event-slot = "&fLightning":
+				close player's inventory
+				load "plugins/HyperCosmetics/config.yml"
+				if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+					set slot yaml value "item-gadgets.slot" from "config" of player to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					stop
+				else:
+					send "&4| &8x &cThis gadget has been disabled by the server." to player
+					stop
+
+on join:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		remove all yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)" from player's inventory
+		if yaml value "item-join.stats" from "config" = true:
+			if player has permission "hypercosmetics.itemjoin" or "hypercosmetics.*":
+				set slot yaml value "item-join.slot" from "config" of player to yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)"
+				stop
+
+on right click:
+	load "plugins/HyperCosmetics/config.yml"
+	if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+		cancel event
+		HyperCosmeticsOpenMenu(player, "OpenMenuMain")
+	if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+		cancel event
+		if chance of 50%:
+			launch ball firework colored red, green and white at player's location timed 1
+			stop
+		if chance of 50%:
+			launch burst firework colored purple fading to blue at player's location timed 1
+			stop
+	if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+		repair slot yaml value "item-gadgets.slot" from "config" of player
+		set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
+		stop
+	if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+		cancel event
+		shoot snowball
+	if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+		cancel event
+		strike lightning at player's location
+		stop
+
+on left click:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = arrow named "&c&l↪ &7Ammunition":
+			cancel event
+			stop
+		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+			cancel event
+			stop
+
+on projectile hit:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		if shooter's tool = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+			if projectile is an arrow:
+				teleport the shooter to location of projectile
+				clear projectile
+				stop
+
+on inventory click:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+			if yaml value "item-join.inventory-change-slot" from "config" = false:
+				cancel event
+				stop
+		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = arrow named "&c&l↪ &7Ammunition":
+			cancel event
+			stop
+		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+			cancel event
+			stop
+
+on drop:
+	load "plugins/HyperCosmetics/config.yml"
+	if yaml value "language" from "config" = "English":
+		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+			if yaml value "item-join.drop" from "config" = false:
+				cancel event
+				stop
+		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = arrow named "&c&l↪ &7Ammunition":
+			cancel event
+			stop
+		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+			cancel event
+			stop
+		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+			cancel event
+			stop
+
+command /hypercosmetics [<text>] [<text>]:
+	aliases: hypercosmetics:hypercosmetics, hc, hypercosmetics:hc
+	description: &fHyperCosmetics command /hypercosmetics.
+	trigger:
+		if arg 1 isn't set:
+			HyperCosmeticsHelp(sender, "HyperCosmeticsCMD")
+		else:
+			if arg 1 != "info" or "reload" or "menu":
+				HyperCosmeticsHelp(sender, "HyperCosmeticsCMD")
+			if arg 1 = "info":
+				load "plugins/HyperCosmetics/config.yml"
+				if yaml value "language" from "config" = "English":
+					send "" to sender
+					send "&8| &8x &6Help:" to sender
+					send "" to sender
+					send "&8| &fName of skript: &cHyperCosmetics (Skript)" to sender
+					send "&8| &fAuthor of skript: &calexisl315 (Alias: Lennord)" to sender
+					send "&8| &fDescription of skript: &cThis skript allows you to implement many types of cosmetics." to sender
+					send "&8| &fVersion of skript: &c0.0.1" to sender
+					send "&8| &fPlugin requirements: &cSkript &7and &cSkript-YAML" to sender
+					send "&8| &fAll languages of skript: &cEnglish" to sender
+					send "" to sender
+					stop
+			if arg 1 = "reload":
+				make console execute command "/sk reload HyperCosmetics"
+				load "plugins/HyperCosmetics/config.yml"
+				if yaml value "language" from "config" = "English":
+					send "&7You have been reloaded this skript." to sender
+				stop
+			if arg 1 = "menu":
+				if sender = console:
+					HyperCosmeticsHelp(console, "HyperCosmeticsCMD")
+				if sender = player:
+					HyperCosmeticsOpenMenu(player, "OpenMenuMain")
+
+on command "/hypercosmetics" or "/hypercosmetics:hypercosmetics" or "hc" or "hypercosmetics:hc":
+	if sender = player:
+		if player doesn't have permission "hypercosmetics.hypercosmetics" or "hypercosmetics.*":
+			cancel event
+			HyperCosmeticsNoPermission(player)
+
+command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
+	aliases: hypercosmetics:hgadgets
+	description: &fHyperCosmetics command /hgadgets.
+	trigger:
+		if sender = player:
+			if arg 1 isn't set:
+				HyperCosmeticsHelp(player, "HGadgetsCMD")
+			else:
+				if arg 1 != "menu" or "give" or "clear" or "list":
+					HyperCosmeticsHelp(player, "HGadgetsCMD")
+				if arg 1 = "menu":
+					if player doesn't have permission "hypercosmetics.hgadgets.openmenu" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+						HyperCosmeticsNoPermission(player)
+					else:
+						HyperCosmeticsOpenMenu(player, "OpenMenuGadgetsMain")
+				if arg 1 = "give":
+					if player doesn't have permission "hypercosmetics.hgadgets.give" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+						HyperCosmeticsNoPermission(player)
+					else:
+						if arg 2 isn't set:
+							HyperCosmeticsHelp(player, "HGadgetsCMD")
+						else:
+							if arg 2 != "firework" or "bow-teleport" or "snowball" or "lightning":
+								HGadgetsCMDList(player)
+							else:
+								if arg 3 isn't set:
+									if arg 2 = "firework":
+										if player doesn't have permission "hypercosmetics.hgadgets.give.firework" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+													set slot yaml value "item-gadgets.slot" from "config" of player to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
+													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+													send action bar "&7You have gived the gadget &6Firework&7." to player
+													stop
+												else:
+													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													stop
+									if arg 2 = "bow-teleport":
+										if player doesn't have permission "hypercosmetics.hgadgets.give.bowteleport" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+													set slot yaml value "item-gadgets.slot" from "config" of player to bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)"
+													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
+													send action bar "&7You have gived the gadget &6Bed-Teleport&7." to player
+													stop
+												else:
+													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													stop
+									if arg 2 = "snowball":
+										if player doesn't have permission "hypercosmetics.hgadgets.give.snowball" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+													set slot yaml value "item-gadgets.slot" from "config" of player to snowball named "&c&l↪ &7Snowball (&eRight-Click&7)"
+													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+													send action bar "&7You have gived the gadget &6Snowball&7." to player
+													stop
+												else:
+													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													stop
+									if arg 2 = "lightning":
+										if player doesn't have permission "hypercosmetics.hgadgets.give.lightning" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+													set slot yaml value "item-gadgets.slot" from "config" of player to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
+													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+													send action bar "&7You have gived the gadget &6Lightning&7." to player
+													stop
+												else:
+													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													stop
+								else:
+									if player doesn't have permission "hypercosmetics.hgadgets.give.others" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+										HyperCosmeticsNoPermission(player)
+									else:
+										if arg 3 is offline:
+											HGadgetsCMDOfflinePlayer(player)
+										else:
+											if arg 2 = "firework":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
+														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
+														send "&7You have gived the gadget &6Firework for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														stop
+											if arg 2 = "bow-teleport":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)"
+														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to arrow named "&c&l↪ &7Ammunition"
+														send "&7You have gived the gadget &6Bow-Teleport for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														stop
+											if arg 2 = "snowball":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to snowball named "&c&l↪ &7Snowball (&eRight-Click&7)"
+														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
+														send "&7You have gived the gadget &6Snowball for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														stop
+											if arg 2 = "lightning":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
+														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
+														send "&7You have gived the gadget &6Lightning for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														stop
+				if arg 1 = "clear":
+					if player doesn't have permission "hypercosmetics.hgadgets.clear" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+						HyperCosmeticsNoPermission(player)
+					else:
+						if arg 2 isn't set:
+							load "plugins/HyperCosmetics/config.yml"
+							if yaml value "language" from "config" = "English":
+								set slot yaml value "item-gadgets.slot" from "config" of player to air
+								set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+								send action bar "&cYou have been cleared all gadgets." to player
+								stop
+						else:
+							if player doesn't have permission "hypercosmetics.hgadgets.clear.others" or "hypercosmetics.*":
+								HyperCosmeticsNoPermission(player)
+							else:
+								if arg 2 parsed as offline player is offline:
+									HGadgetsCMDOfflinePlayer(player)
+								else:
+									load "plugins/HyperCosmetics/config.yml"
+									if yaml value "language" from "config" = "English":
+										set slot yaml value "item-gadgets.slot" from "config" of arg 2 parsed as offline player to air
+										set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 2 parsed as offline player to air
+										send "&7You have cleared all gadgets for the player &6%arg 2 parsed as offline player%&7." to player
+										stop
+				if arg 1 = "list":
+					HGadgetsCMDList(player)
+		if sender = console:
+			HyperCosmeticsNoCommandConsole(console)
+
+
+on command "/hgadgets" or "/hypercosmetics:hgadgets":
+	if sender = player:
+		if player doesn't have permission "hypercosmetics.hgadgets" or "hypercosmetics.*":
+			cancel event
+			HyperCosmeticsNoPermission(player)
