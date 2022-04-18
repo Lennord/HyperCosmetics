@@ -81,6 +81,7 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 14 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to leather chestplate named "&fSuits"
 			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to light blue stained glass pane
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
+			set slot 53 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to redstone block named "&cClear all cosmetics"
 			open (metadata tag "HyperCosmeticsOpenMenuMain" of {_s}) to {_s}
 			stop
 		if {_typemenu} = "OpenMenuGadgetsMain":
@@ -201,6 +202,17 @@ on inventory click:
 				HyperCosmeticsOpenMenu(player, "OpenMenuGadgetsMain")
 			if name of event-slot = "&fSuits":
 				HyperCosmeticsOpenMenu(player, "OpenMenuSuitsMain")
+			if name of event-slot = "&cClear all cosmetics":
+				close player's inventory
+				load "plugins/HyperCosmetics/config.yml"
+				set slot yaml value "item-gadgets.slot" from "config" of player to air
+				set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+				set player's helmet to air
+				set player's chestplate to air
+				set player's leggings to air
+				set player's boots to air
+				send action bar "&cYou have cleared all cosmetics." to player
+				stop
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
