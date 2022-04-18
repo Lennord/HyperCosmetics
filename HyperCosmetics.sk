@@ -81,7 +81,7 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 14 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to leather chestplate named "&fSuits"
 			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to light blue stained glass pane
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
-			set slot 53 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to redstone block named "&cClear all cosmetics"
+			set slot 53 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all cosmetics\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuMain" of {_s}) to {_s}
 			stop
 		if {_typemenu} = "OpenMenuGadgetsMain":
@@ -107,9 +107,9 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			else:
 				set slot 14 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
 			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to light blue stained glass pane
-			set slot 45 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to arrow named "&6« &cPage Back"
+			set slot 45 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&6« &cPage Back\""}""},SkullOwner:{Id:[I;1295380513,-2118761234,-1492021884,1645691172],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWYxMzNlOTE5MTlkYjBhY2VmZGMyNzJkNjdmZDg3YjRiZTg4ZGM0NGE5NTg5NTg4MjQ0NzRlMjFlMDZkNTNlNiJ9fX0=""}]}}}"
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
-			set slot 53 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to redstone block named "&cClear all gadgets"
+			set slot 53 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all gadgets\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s}) to {_s}
 			stop
 		if {_typemenu} = "OpenMenuSuitsMain":
@@ -139,9 +139,9 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			else:
 				set slot 15 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
 			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to light blue stained glass pane
-			set slot 45 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to arrow named "&6« &cPage Back"
+			set slot 45 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&6« &cPage Back\""}""},SkullOwner:{Id:[I;1295380513,-2118761234,-1492021884,1645691172],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWYxMzNlOTE5MTlkYjBhY2VmZGMyNzJkNjdmZDg3YjRiZTg4ZGM0NGE5NTg5NTg4MjQ0NzRlMjFlMDZkNTNlNiJ9fX0=""}]}}}"
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
-			set slot 53 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to redstone block named "&cClear all suits"
+			set slot 53 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all suits\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s}) to {_s}
 			stop
 
