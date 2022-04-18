@@ -203,16 +203,117 @@ on inventory click:
 			if name of event-slot = "&fSuits":
 				HyperCosmeticsOpenMenu(player, "OpenMenuSuitsMain")
 			if name of event-slot = "&cClear all cosmetics":
-				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
-				set slot yaml value "item-gadgets.slot" from "config" of player to air
-				set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
-				set player's helmet to air
-				set player's chestplate to air
-				set player's leggings to air
-				set player's boots to air
-				send action bar "&cYou have cleared all cosmetics." to player
-				stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if player's helmet = leather helmet named "&fLeather Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if player's helmet = chainmail helmet named "&fChainmail Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if player's helmet = iron helmet named "&fIron Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if player's helmet = golden helmet named "&fGolden Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if player's helmet = diamond helmet named "&fDiamond Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
+				if player's helmet = netherite helmet named "&fNetherite Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all cosmetics." to player
+					stop
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
@@ -223,12 +324,37 @@ on inventory click:
 			if name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
 			if name of event-slot = "&cClear all gadgets":
-				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
-				set slot yaml value "item-gadgets.slot" from "config" of player to air
-				set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
-				send action bar "&cYou have cleared all gadgets." to player
-				stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+					close player's inventory
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all gadgets." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+					close player's inventory
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all gadgets." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+					close player's inventory
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all gadgets." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+					close player's inventory
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all gadgets." to player
+					stop
+				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+					close player's inventory
+					set slot yaml value "item-gadgets.slot" from "config" of player to air
+					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
+					send action bar "&cYou have cleared all gadgets." to player
+					stop
 			if name of event-slot = "&fFirework":
 				close player's inventory
 				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.firework" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
@@ -239,7 +365,6 @@ on inventory click:
 						set slot yaml value "item-gadgets.slot" from "config" of player to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Firework&7." to player
-
 						stop
 					else:
 						send "&4| &8x &cThis gadget has been disabled by the server." to player
@@ -310,15 +435,54 @@ on inventory click:
 			if name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
 			if name of event-slot = "&cClear all suits":
-				close player's inventory
-				load "plugins/HyperCosmetics/config.yml"
-				close player's inventory
-				set player's helmet to air
-				set player's chestplate to air
-				set player's leggings to air
-				set player's boots to air
-				send action bar "&cYou have cleared all suits." to player
-				stop
+				if player's helmet = leather helmet named "&fLeather Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					send action bar "&cYou have cleared all suits." to player
+					stop
+				if player's helmet = chainmail helmet named "&fChainmail Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					send action bar "&cYou have cleared all suits." to player
+					stop
+				if player's helmet = iron helmet named "&fIron Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					send action bar "&cYou have cleared all suits." to player
+					stop
+				if player's helmet = golden helmet named "&fGolden Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					send action bar "&cYou have cleared all suits." to player
+					stop
+				if player's helmet = diamond helmet named "&fDiamond Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					send action bar "&cYou have cleared all suits." to player
+					stop
+				if player's helmet = netherite helmet named "&fNetherite Armor":
+					close player's inventory
+					set player's helmet to air
+					set player's chestplate to air
+					set player's leggings to air
+					set player's boots to air
+					send action bar "&cYou have cleared all suits." to player
+					stop
 			if name of event-slot = "&fLeather Armor":
 				if player doesn't have permission "hypercosmetics.openmenu.suits.give.leatherarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
