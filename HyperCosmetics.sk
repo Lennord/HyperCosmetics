@@ -643,27 +643,29 @@ on inventory click:
 			if name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
 			if name of event-slot = "&cClear all messages":
+				close player's inventory
+				delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+				send action bar "&cYou have cleared all messages." to player
+				stop
+			if name of event-slot = "&fMessage &b##01":
 				if player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.1" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
-						close player's inventory
-						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
-						send action bar "&cYou have cleared all messages." to player
-						stop
-			if name of event-slot = "&fMessage &b##01":
-				close player's inventory
-				set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
-				send action bar "&7You have enabled this messages." to player
-				stop
+					if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+						if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
+							close player's inventory
+							set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
+							send action bar "&7You have enabled this messages." to player
+							stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
 	if yaml value "language" from "config" = "English":
-		if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
-			set join message to ""
-			broadcast "&c%player% &7has joined this server." to all worlds
-			stop
+		if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
+				set join message to ""
+				broadcast "&c%player% &7has joined this server." to all worlds
+				stop
 
 on quit:
 	load "plugins/HyperCosmetics/config.yml"
