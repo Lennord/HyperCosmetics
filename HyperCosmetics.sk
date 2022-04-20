@@ -30,6 +30,8 @@ on load:
 		set yaml value "cosmetics.suits.diamond-armor.stats" from "config" to true
 		set yaml value "cosmetics.suits.netherite-armor.stats" from "config" to true
 		set yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" to true
+		set yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" to true
+		set yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" to true
 		save yaml "config"
 		unload yaml "config"
 		stop
@@ -158,6 +160,14 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to paper named "&fMessage &b##01" with lore "", "&f• &c%{_s}% &7has joined this server.", "&f• &c%{_s}% &7has leaved this server.", "" and "&f• &6Right-Click for give this messages."
 			else:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to barrier named "&cUnavailable"
+			if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+				set slot 11 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to paper named "&fMessage &b##02" with lore "", "&f• &c%{_s}% &7has joined the better server of the world.", "&f• &c%{_s}% &7has leaved the better server of the world.", "" and "&f• &6Right-Click for give this messages."
+			else:
+				set slot 11 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to barrier named "&cUnavailable"
+			if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+				set slot 12 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to paper named "&fMessage &b##03" with lore "", "&f• &c%{_s}% &7has joined the worst server of the world.", "&f• &c%{_s}% &7has leaved the worst server of the world.", "" and "&f• &6Right-Click for give this messages."
+			else:
+				set slot 12 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to barrier named "&cUnavailable"
 			set slot 36, 37, 38, 39, 40, 41, 42, 43 and 44 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to light blue stained glass pane
 			set slot 45 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&6« &cPage Back\""}""},SkullOwner:{Id:[I;1295380513,-2118761234,-1492021884,1645691172],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWYxMzNlOTE5MTlkYjBhY2VmZGMyNzJkNjdmZDg3YjRiZTg4ZGM0NGE5NTg5NTg4MjQ0NzRlMjFlMDZkNTNlNiJ9fX0=""}]}}}"
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
@@ -363,7 +373,7 @@ on inventory click:
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
 					stop
-				if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
+				if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} or {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} or {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -652,11 +662,43 @@ on inventory click:
 					HyperCosmeticsNoPermission(player)
 				else:
 					if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
-						if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
-							close player's inventory
-							set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
-							send action bar "&7You have enabled this messages." to player
-							stop
+						close player's inventory
+						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} 
+						wait 1 tick
+						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
+						send action bar "&7You have enabled this messages." to player
+						stop
+					else:
+						send "&4| &8x &cThis messages has been disabled by the server." to player
+						stop
+			if name of event-slot = "&fMessage &b##02":
+				if player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.2" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+					HyperCosmeticsNoPermission(player)
+				else:
+					if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+						close player's inventory
+						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} 
+						wait 1 tick
+						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} to true
+						send action bar "&7You have enabled this messages." to player
+						stop
+					else:
+						send "&4| &8x &cThis messages has been disabled by the server." to player
+						stop
+			if name of event-slot = "&fMessage &b##03":
+				if player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.3" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+					HyperCosmeticsNoPermission(player)
+				else:
+					if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+						close player's inventory
+						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} 
+						wait 1 tick
+						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} to true
+						send action bar "&7You have enabled this messages." to player
+						stop
+					else:
+						send "&4| &8x &cThis messages has been disabled by the server." to player
+						stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
@@ -666,14 +708,35 @@ on join:
 				set join message to ""
 				broadcast "&c%player% &7has joined this server." to all worlds
 				stop
+		if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} is set:
+				set join message to ""
+				broadcast "&c%player% &7has joined the better server of the world." to all worlds
+				stop
+		if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
+				set join message to ""
+				broadcast "&c%player% &7has joined the worst server of the world." to all worlds
+				stop
 
 on quit:
 	load "plugins/HyperCosmetics/config.yml"
 	if yaml value "language" from "config" = "English":
-		if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
-			set quit message to ""
-			broadcast "&c%player% &7has leaved this server." to all worlds
-			stop
+		if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
+				set quit message to ""
+				broadcast "&c%player% &7has leaved this server." to all worlds
+				stop
+		if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} is set:
+				set quit message to ""
+				broadcast "&c%player% &7has leaved the better server of the world." to all worlds
+				stop
+		if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
+				set quit message to ""
+				broadcast "&c%player% &7has leaved the worst server of the world." to all worlds
+				stop
 
 on damage:
 	load "plugins/HyperCosmetics/config.yml"
@@ -1561,7 +1624,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 						if arg 2 isn't set:
 							HyperCosmeticsHelp(player, "HJoinQuitMessagesCMD")
 						else:
-							if arg 2 != "message01":
+							if arg 2 != "message01" or "message02" or "message03":
 								HJoinQuitMessagesCMDList(player)
 							else:
 								if arg 3 isn't set:
@@ -1569,9 +1632,47 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 										if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.1" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
-											set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
-											send action bar "&7You have enabled this messages." to player
-											stop
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+													wait 1 tick
+													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
+													send action bar "&7You have enabled this messages." to player
+													stop
+												else:
+													send "&4| &8x &cThis messages has been disabled by the server." to player
+													stop
+									if arg 2 = "message02":
+										if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.2" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+													wait 1 tick
+													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} to true
+													send action bar "&7You have enabled this messages." to player
+													stop
+												else:
+													send "&4| &8x &cThis messages has been disabled by the server." to player
+													stop
+									if arg 2 = "message03":
+										if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.3" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+											HyperCosmeticsNoPermission(player)
+										else:
+											load "plugins/HyperCosmetics/config.yml"
+											if yaml value "language" from "config" = "English":
+												if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+													wait 1 tick
+													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} to true
+													send action bar "&7You have enabled this messages." to player
+													stop
+												else:
+													send "&4| &8x &cThis messages has been disabled by the server." to player
+													stop
 								else:
 									if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.others" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
@@ -1580,9 +1681,41 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 											HJoinQuitMessagesCMDOfflinePlayer(player)
 										else:
 											if arg 2 = "message01":
-												set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message01} to true
-												send "&7You have enabled the message &6Message01 &7for the player &6%arg 3%&7." to player
-												stop
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
+														wait 1 tick
+														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message01} to true
+														send "&7You have enabled the message &6Message01 &7for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis messages has been disabled by the server." to player
+														stop
+											if arg 2 = "message02":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
+														wait 1 tick
+														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message02} to true
+														send "&7You have enabled the message &6Message02 &7for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis messages has been disabled by the server." to player
+														stop
+											if arg 2 = "message03":
+												load "plugins/HyperCosmetics/config.yml"
+												if yaml value "language" from "config" = "English":
+													if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
+														wait 1 tick
+														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message03} to true
+														send "&7You have enabled the message &6Message03 &7for the player &6%arg 3%&7." to player
+														stop
+													else:
+														send "&4| &8x &cThis messages has been disabled by the server." to player
+														stop
 				if arg 1 = "clear":
 					if player doesn't have permission "hypercosmetics.hjoinquitmessages.clear" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
