@@ -32,7 +32,6 @@ on load:
 		set yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" to true
 		set yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" to true
 		set yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" to true
-		set yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" to true
 		set yaml value "cosmetics.pets.king.stats" from "config" to true
 		save yaml "config"
 		unload yaml "config"
