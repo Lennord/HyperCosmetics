@@ -1855,7 +1855,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 											if arg 2 = "message01":
 												load "plugins/HyperCosmetics/config.yml"
 												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+													if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
 														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
 														wait 1 tick
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message01} to true
