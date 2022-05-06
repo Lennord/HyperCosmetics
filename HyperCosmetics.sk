@@ -4,7 +4,7 @@
 #   --> Code:
 
 on load:
-	if yaml file "plugins/HyperCosmetics/config.yml" doesn't exist:
+	yaml file "plugins/HyperCosmetics/config.yml" doesn't exist:
 		load "plugins/HyperCosmetics/config.yml"
 		set yaml value "language" from "config" to "English"
 		set yaml value "item-join.stats" from "config" to true
@@ -38,7 +38,7 @@ on load:
 		stop
 	else:
 		load "plugins/HyperCosmetics/config.yml"
-		if yaml value "language" from "config" != "English":
+		yaml value "language" from "config" != "English":
 			set yaml value "language" from "config" to "English"
 		save yaml "config"
 		unload yaml "config"
@@ -46,34 +46,29 @@ on load:
 
 on load:
 	send "&7[&bHyperCosmetics&7] &8x &2Enabled" to console
-	stop
 
 on unload:
 	send "&7[&bHyperCosmetics&7] &8x &cDisabled" to console
-	stop
 
 function HyperCosmeticsNoPermission(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
+	yaml value "language" from "config" = "English":
 		send "&4| &8x &cYou have not permission to use this command." to {_s}
-		stop
 
 function HyperCosmeticsNoCommandConsole(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
+	yaml value "language" from "config" = "English":
 		send "&4| &8x &cYou must be a player to use this command." to {_s}
-		stop
 
 function HyperCosmeticsCMDOfflinePlayer(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
+	yaml value "language" from "config" = "English":
 		send "&4| &8x &cThe player is offline." to {_s}
-		stop
 
 function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if {_typemenu} = "OpenMenuMain":
+	yaml value "language" from "config" = "English":
+		{_typemenu} = "OpenMenuMain":
 			set metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to chest inventory with 6 rows named "Main Menu"
 			set slot 10 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to firework named "&fGadgets"
 			set slot 12 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to leather chestplate named "&fSuits"
@@ -83,26 +78,25 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
 			set slot 53 of metadata tag "HyperCosmeticsOpenMenuMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all cosmetics\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuMain" of {_s}) to {_s}
-			stop
-		if {_typemenu} = "OpenMenuGadgetsMain":
+		{_typemenu} = "OpenMenuGadgetsMain":
 			set metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to chest inventory with 6 rows named "Gadgets Menu"
-			if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+			yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to firework named "&fFirework" with lore "", "&f• &7Celebrate the good news you've had for", "&7the day by using fireworks.", "" and "&f• &6Right-Click for give this gadgets."
 			else:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+			yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
 				set slot 11 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to bow named "&fBow Teleport" with lore "", "&f• &7Shoot to teleport to the arrow landing.", "" and "&f• &6Right-Click for give this gadgets."
 			else:
 				set slot 11 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+			yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
 				set slot 12 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to snowball named "&fSnowball" with lore "", "&f• &7Send your most beautiful snowballs towards", "&7the people you want to attack.", "" and "&f• &6Right-Click for give this gadgets."
 			else:
 				set slot 12 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+			yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
 				set slot 13 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to blaze rod named "&fLightning" with lore "", "&f• &7Make Zeus' storm appear towards your target.", "" and "&f• &6Right-Click for give this gadgets."
 			else:
 				set slot 13 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+			yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
 				set slot 14 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to feather named "&fRocket" with lore "", "&f• &7Take off to the most beautiful planet in the", "&7world.", "" and "&f• &6Right-Click for give this gadgets."
 			else:
 				set slot 14 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to barrier named "&cUnavailable"
@@ -111,30 +105,29 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
 			set slot 53 of metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all gadgets\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of {_s}) to {_s}
-			stop
-		if {_typemenu} = "OpenMenuSuitsMain":
+		{_typemenu} = "OpenMenuSuitsMain":
 			set metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to chest inventory with 6 rows named "Suits Menu"
-			if yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
+			yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to leather chestplate named "&fLeather Armor" with lore "", "&f• &7Equip yourself as a knight with this armor.", "" and "&f• &6Right-Click for give this suits."
 			else:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
+			yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
 				set slot 11 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to chainmail chestplate named "&fChainmail Armor" with lore "", "&f• &7Equip yourself as a knight with this armor.", "" and "&f• &6Right-Click for give this suits."
 			else:
 				set slot 11 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
+			yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
 				set slot 12 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to iron chestplate named "&fIron Armor" with lore "", "&f• &7Equip yourself as a knight with this armor.", "" and "&f• &6Right-Click for give this suits."
 			else:
 				set slot 12 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
+			yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
 				set slot 13 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to golden chestplate named "&fGolden Armor" with lore "", "&f• &7Equip yourself as a knight with this armor.", "" and "&f• &6Right-Click for give this suits."
 			else:
 				set slot 13 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
+			yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
 				set slot 14 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to diamond chestplate named "&fDiamond Armor" with lore "", "&f• &7Equip yourself as a knight with this armor.", "" and "&f• &6Right-Click for give this suits."
 			else:
 				set slot 14 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
+			yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
 				set slot 15 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to netherite chestplate named "&fNetherite Armor" with lore "", "&f• &7Equip yourself as a knight with this armor.", "" and "&f• &6Right-Click for give this suits."
 			else:
 				set slot 15 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to barrier named "&cUnavailable"
@@ -143,18 +136,17 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
 			set slot 53 of metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all suits\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuSuitsMain" of {_s}) to {_s}
-			stop
-		if {_typemenu} = "OpenMenuJoinQuitMessagesMain":
+		{_typemenu} = "OpenMenuJoinQuitMessagesMain":
 			set metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to chest inventory with 6 rows named "Join/Quit Messages Menu"
-			if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+			yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to paper named "&fMessage &b##01" with lore "", "&f• &c%{_s}% &7has joined this server.", "&f• &c%{_s}% &7has leaved this server.", "" and "&f• &6Right-Click for give this messages."
 			else:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+			yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
 				set slot 11 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to paper named "&fMessage &b##02" with lore "", "&f• &c%{_s}% &7has joined the better server of the world.", "&f• &c%{_s}% &7has leaved the better server of the world.", "" and "&f• &6Right-Click for give this messages."
 			else:
 				set slot 11 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to barrier named "&cUnavailable"
-			if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+			yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
 				set slot 12 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to paper named "&fMessage &b##03" with lore "", "&f• &c%{_s}% &7has joined the worst server of the world.", "&f• &c%{_s}% &7has leaved the worst server of the world.", "" and "&f• &6Right-Click for give this messages."
 			else:
 				set slot 12 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to barrier named "&cUnavailable"
@@ -163,10 +155,9 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
 			set slot 53 of metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all messages\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of {_s}) to {_s}
-			stop
-		if {_typemenu} = "OpenMenuPetsMain":
+		{_typemenu} = "OpenMenuPetsMain":
 			set metadata tag "HyperCosmeticsOpenMenuPetsMain" of {_s} to chest inventory with 6 rows named "Pets Menu"
-			if yaml value "cosmetics.pets.king.stats" from "config" = true:
+			yaml value "cosmetics.pets.king.stats" from "config" = true:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuPetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&fKing\""}""},SkullOwner:{Id:[I;670882166,1095451468,-1623077635,-899593644],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjRmZWY2NWE5YzkzYzBlYTgzYWNlMGJiYzZiNWQxMjY1NTE1NzUzN2ViNjJhZmE4N2EzMWI5NjI3M2QwNjkzZiJ9fX0=""}]}}}" with lore "", "&f• &7The king will appear at your position and", "&7will be your ally until the end of your", "&7life.", "" and "&f• &6Right-Click for give this pets."
 			else:
 				set slot 10 of metadata tag "HyperCosmeticsOpenMenuPetsMain" of {_s} to barrier named "&cUnavailable"
@@ -175,12 +166,11 @@ function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 			set slot 49 of metadata tag "HyperCosmeticsOpenMenuPetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClose the menu\""}""},SkullOwner:{Id:[I;1590668272,1381189552,-1538418164,-1841266247],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==""}]}}}"
 			set slot 53 of metadata tag "HyperCosmeticsOpenMenuPetsMain" of {_s} to player head with nbt "{display:{Name:""{\""text\"":\""&cClear all pets\""}""},SkullOwner:{Id:[I;-2025134027,2023836623,-1660048914,619009262],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDQxZjRlZGJjNjhjOTA2MTM1NTI0MmJkNzNlZmZjOTI5OWEzMjUyYjlmMTFlODJiNWYxZWM3YjNiNmFjMCJ9fX0=""}]}}}"
 			open (metadata tag "HyperCosmeticsOpenMenuPetsMain" of {_s}) to {_s}
-			stop
 
 function HyperCosmeticsHelp(s: sender, typehelp: text):
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if {_typehelp} = "HyperCosmeticsCMD":
+	yaml value "language" from "config" = "English":
+		{_typehelp} = "HyperCosmeticsCMD":
 			send "" to {_s}
 			send "&8| &8x &6Help:" to {_s}
 			send "" to {_s}
@@ -188,8 +178,7 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 			send "&8| &f/hypercosmetics &breload &8x &7Reload this skript." to {_s}
 			send "&8| &f/hypercosmetics &bmenu &8x &7Open menu." to {_s}
 			send "" to {_s}
-			stop
-		if {_typehelp} = "HGadgetsCMD":
+		{_typehelp} = "HGadgetsCMD":
 			send "" to {_s}
 			send "&8| &8x &6Help:" to {_s}
 			send "" to {_s}
@@ -198,8 +187,7 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 			send "&8| &f/hgadget &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all gadgets." to {_s}
 			send "&8| &f/hgadget &blist &8x &7List of all gadgets." to {_s}
 			send "" to {_s}
-			stop
-		if {_typehelp} = "HSuitsCMD":
+		{_typehelp} = "HSuitsCMD":
 			send "" to {_s}
 			send "&8| &8x &6Help:" to {_s}
 			send "" to {_s}
@@ -208,8 +196,7 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 			send "&8| &f/hsuits &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all suits." to {_s}
 			send "&8| &f/hsuits &blist &8x &7List of all suits." to {_s}
 			send "" to {_s}
-			stop
-		if {_typehelp} = "HJoinQuitMessagesCMD":
+		{_typehelp} = "HJoinQuitMessagesCMD":
 			send "" to {_s}
 			send "&8| &8x &6Help:" to {_s}
 			send "" to {_s}
@@ -218,8 +205,7 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 			send "&8| &f/hjoinquitmessages &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all messages." to {_s}
 			send "&8| &f/hjoinquitmessages &blist &8x &7List of all messages." to {_s}
 			send "" to {_s}
-			stop
-		if {_typehelp} = "HJoinQuitMessagesCMD":
+		{_typehelp} = "HJoinQuitMessagesCMD":
 			send "" to {_s}
 			send "&8| &8x &6Help:" to {_s}
 			send "" to {_s}
@@ -228,34 +214,29 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 			send "&8| &f/hjoinquitmessages &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all pets." to {_s}
 			send "&8| &f/hjoinquitmessages &blist &8x &7List of all pets." to {_s}
 			send "" to {_s}
-			stop
 
 function HyperCosmeticsCMDList(s: sender, typecosmetics: text):
 	load "plugins/HyperCosmetics/config.yml"
-	if {_typecosmetics} = "Gadgets":
-		if yaml value "language" from "config" = "English":
+	{_typecosmetics} = "Gadgets":
+		yaml value "language" from "config" = "English":
 			send "&6Liste of all gadgets: &cFirework&7, &cBow-Teleport&7, &cSnowball&7, &cLightning &7and &cRocket" to {_s}
-			stop
-	if {_typecosmetics} = "Suits":
-		if yaml value "language" from "config" = "English":
-			send "&6Liste of all gadgets: &cLeather-Armor&7, &cChainmail-Armor&7, &cIron-Armor&7, &cGolden-Armor&7, &cDiamond-Armor &7and &cNetherite-Armor" to {_s}
-			stop
-	if {_typecosmetics} = "JoinQuitMessages":
-		if yaml value "language" from "config" = "English":
-			send "&6Liste of all gadgets: &cMessage01&7, &cMessage02 &7and &cMessage03" to {_s}
-			stop
-	if {_typecosmetics} = "Pets":
-		if yaml value "language" from "config" = "English":
-			send "&6Liste of all gadgets: &cKing" to {_s}
-			stop
+	{_typecosmetics} = "Suits":
+		yaml value "language" from "config" = "English":
+			send "&6Liste of all suits: &cLeather-Armor&7, &cChainmail-Armor&7, &cIron-Armor&7, &cGolden-Armor&7, &cDiamond-Armor &7and &cNetherite-Armor" to {_s}
+	{_typecosmetics} = "JoinQuitMessages":
+		yaml value "language" from "config" = "English":
+			send "&6Liste of all join/quit messages: &cMessage01&7, &cMessage02 &7and &cMessage03" to {_s}
+	{_typecosmetics} = "Pets":
+		yaml value "language" from "config" = "English":
+			send "&6Liste of all pets: &cKing" to {_s}
 
 function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if yaml value "cosmetics.pets.king.stats" from "config" = true:
-			if {HyperCosmetics::%{_s}'s uuid%::Pets::king} is set:
+	yaml value "language" from "config" = "English":
+		yaml value "cosmetics.pets.king.stats" from "config" = true:
+			{HyperCosmetics::%{_s}'s uuid%::Pets::king} is set:
 				loop all entities:
-					if name of loop-entity = "&7King of &c%{_s}%":
+					name of loop-entity = "&7King of &c%{_s}%":
 						kill loop-entity
 				spawn armor stand at location of {_s}
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
@@ -266,9 +247,9 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 				set last spawned armor stand's leggings to iron leggings
 				set last spawned armor stand's boots to iron boots
 				while {_s} is online:
-					if {_s} is online:
+					{_s} is online:
 						loop all entities:
-							if name of loop-entity = "&7King of &c%{_s}%":
+							name of loop-entity = "&7King of &c%{_s}%":
 								wait a tick
 								set {_HyperCosmetics::%{_s}'s uuid%::PetsLocation} to location of {_s}
 								teleport loop-entity to location of {_s}
@@ -285,21 +266,20 @@ on inventory click:
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
-		if yaml value "language" from "config" = "English":
-			if name of event-slot = "&cClose the menu":
+		yaml value "language" from "config" = "English":
+			name of event-slot = "&cClose the menu":
 				close player's inventory
-				stop
-			if name of event-slot = "&fGadgets":
+			name of event-slot = "&fGadgets":
 				HyperCosmeticsOpenMenu(player, "OpenMenuGadgetsMain")
-			if name of event-slot = "&fSuits":
+			name of event-slot = "&fSuits":
 				HyperCosmeticsOpenMenu(player, "OpenMenuSuitsMain")
-			if name of event-slot = "&fJoin/Quit Messages":
+			name of event-slot = "&fJoin/Quit Messages":
 				HyperCosmeticsOpenMenu(player, "OpenMenuJoinQuitMessagesMain")
-			if name of event-slot = "&fPets":
+			name of event-slot = "&fPets":
 				HyperCosmeticsOpenMenu(player, "OpenMenuPetsMain")
-			if name of event-slot = "&cClear all cosmetics":
+			name of event-slot = "&cClear all cosmetics":
 				load "plugins/HyperCosmetics/config.yml"
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -308,14 +288,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -324,14 +303,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -340,14 +318,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -356,14 +333,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -372,14 +348,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if player's helmet = leather helmet named "&fLeather Armor":
+				player's helmet = leather helmet named "&fLeather Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -388,14 +363,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if player's helmet = chainmail helmet named "&fChainmail Armor":
+				player's helmet = chainmail helmet named "&fChainmail Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -404,14 +378,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if player's helmet = iron helmet named "&fIron Armor":
+				player's helmet = iron helmet named "&fIron Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -420,14 +393,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if player's helmet = golden helmet named "&fGolden Armor":
+				player's helmet = golden helmet named "&fGolden Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -436,14 +408,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if player's helmet = diamond helmet named "&fDiamond Armor":
+				player's helmet = diamond helmet named "&fDiamond Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -452,14 +423,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if player's helmet = netherite helmet named "&fNetherite Armor":
+				player's helmet = netherite helmet named "&fNetherite Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -468,14 +438,13 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
-				if {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} or {HyperCosmetics::%player's uuid%::Pets::*} is set:
+				{HyperCosmetics::%player's uuid%::JoinQuitMessages::*} or {HyperCosmetics::%player's uuid%::Pets::*} is set:
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
@@ -484,353 +453,307 @@ on inventory click:
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all cosmetics." to player
-					stop
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
-		if yaml value "language" from "config" = "English":
-			if name of event-slot = "&cClose the menu":
+		yaml value "language" from "config" = "English":
+			name of event-slot = "&cClose the menu":
 				close player's inventory
-				stop
-			if name of event-slot = "&6« &cPage Back":
+			name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-			if name of event-slot = "&cClear all gadgets":
+			name of event-slot = "&cClear all gadgets":
 				load "plugins/HyperCosmetics/config.yml"
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
 					close player's inventory
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					send action bar "&cYou have cleared all gadgets." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 					close player's inventory
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					send action bar "&cYou have cleared all gadgets." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 					close player's inventory
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					send action bar "&cYou have cleared all gadgets." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 					close player's inventory
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					send action bar "&cYou have cleared all gadgets." to player
-					stop
-				if slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+				slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 					close player's inventory
 					set slot yaml value "item-gadgets.slot" from "config" of player to air
 					set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 					send action bar "&cYou have cleared all gadgets." to player
-					stop
-			if name of event-slot = "&fFirework":
+			name of event-slot = "&fFirework":
 				close player's inventory
-				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.firework" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+				player doesn't have permission "hypercosmetics.openmenu.gadgets.give.firework" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
 					load "plugins/HyperCosmetics/config.yml"
-					if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+					yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
 						set slot yaml value "item-gadgets.slot" from "config" of player to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Firework&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis gadget has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fBow Teleport":
+			name of event-slot = "&fBow Teleport":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
-				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.bowteleport" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+				player doesn't have permission "hypercosmetics.openmenu.gadgets.give.bowteleport" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+					yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
 						set slot yaml value "item-gadgets.slot" from "config" of player to bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)"
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
 						send action bar "&7You have gived the gadget &6Bed-Teleport&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis gadget has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fSnowball":
+			name of event-slot = "&fSnowball":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
-				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.snowball" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+				player doesn't have permission "hypercosmetics.openmenu.gadgets.give.snowball" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+					yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
 						set slot yaml value "item-gadgets.slot" from "config" of player to snowball named "&c&l↪ &7Snowball (&eRight-Click&7)"
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Snowball&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis gadget has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fLightning":
+			name of event-slot = "&fLightning":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
-				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.lightning" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+				player doesn't have permission "hypercosmetics.openmenu.gadgets.give.lightning" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+					yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
 						set slot yaml value "item-gadgets.slot" from "config" of player to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Lightning&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis gadget has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fRocket":
+			name of event-slot = "&fRocket":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
-				if player doesn't have permission "hypercosmetics.openmenu.gadgets.give.rocket" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+				player doesn't have permission "hypercosmetics.openmenu.gadgets.give.rocket" or "hypercosmetics.openmenu.gadgets.give.*" or "hypercosmetics.openmenu.gadgets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+					yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
 						set slot yaml value "item-gadgets.slot" from "config" of player to feather named "&c&l↪ &7Rocket (&eRight-Click&7)"
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Rocket&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis gadget has been disabled by the server." to player
-						stop
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuSuitsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
-		if yaml value "language" from "config" = "English":
-			if name of event-slot = "&cClose the menu":
+		yaml value "language" from "config" = "English":
+			name of event-slot = "&cClose the menu":
 				close player's inventory
-				stop
-			if name of event-slot = "&6« &cPage Back":
+			name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-			if name of event-slot = "&cClear all suits":
-				if player's helmet = leather helmet named "&fLeather Armor":
+			name of event-slot = "&cClear all suits":
+				player's helmet = leather helmet named "&fLeather Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
 					set player's leggings to air
 					set player's boots to air
 					send action bar "&cYou have cleared all suits." to player
-					stop
-				if player's helmet = chainmail helmet named "&fChainmail Armor":
+				player's helmet = chainmail helmet named "&fChainmail Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
 					set player's leggings to air
 					set player's boots to air
 					send action bar "&cYou have cleared all suits." to player
-					stop
-				if player's helmet = iron helmet named "&fIron Armor":
+				player's helmet = iron helmet named "&fIron Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
 					set player's leggings to air
 					set player's boots to air
 					send action bar "&cYou have cleared all suits." to player
-					stop
-				if player's helmet = golden helmet named "&fGolden Armor":
+				player's helmet = golden helmet named "&fGolden Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
 					set player's leggings to air
 					set player's boots to air
 					send action bar "&cYou have cleared all suits." to player
-					stop
-				if player's helmet = diamond helmet named "&fDiamond Armor":
+				player's helmet = diamond helmet named "&fDiamond Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
 					set player's leggings to air
 					set player's boots to air
 					send action bar "&cYou have cleared all suits." to player
-					stop
-				if player's helmet = netherite helmet named "&fNetherite Armor":
+				player's helmet = netherite helmet named "&fNetherite Armor":
 					close player's inventory
 					set player's helmet to air
 					set player's chestplate to air
 					set player's leggings to air
 					set player's boots to air
 					send action bar "&cYou have cleared all suits." to player
-					stop
-			if name of event-slot = "&fLeather Armor":
-				if player doesn't have permission "hypercosmetics.openmenu.suits.give.leatherarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fLeather Armor":
+				player doesn't have permission "hypercosmetics.openmenu.suits.give.leatherarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
+					yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
 						close player's inventory
 						set player's helmet to leather helmet named "&fLeather Armor"
 						set player's chestplate to leather chestplate named "&fLeather Armor"
 						set player's leggings to leather leggings named "&fLeather Armor"
 						set player's boots to leather boots named "&fLeather Armor"
 						send action bar "&7You have gived the suit &6Leather Armor&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fChainmail Armor":
-				if player doesn't have permission "hypercosmetics.openmenu.suits.give.chainmailarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fChainmail Armor":
+				player doesn't have permission "hypercosmetics.openmenu.suits.give.chainmailarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
+					yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
 						close player's inventory
 						set player's helmet to chainmail helmet named "&fChainmail Armor"
 						set player's chestplate to chainmail chestplate named "&fChainmail Armor"
 						set player's leggings to chainmail leggings named "&fChainmail Armor"
 						set player's boots to chainmail boots named "&fChainmail Armor"
 						send action bar "&7You have gived the suit &6Chainmail Armor&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fIron Armor":
-				if player doesn't have permission "hypercosmetics.openmenu.suits.give.ironarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fIron Armor":
+				player doesn't have permission "hypercosmetics.openmenu.suits.give.ironarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
+					yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
 						close player's inventory
 						set player's helmet to iron helmet named "&fIron Armor"
 						set player's chestplate to iron chestplate named "&fIron Armor"
 						set player's leggings to iron leggings named "&fIron Armor"
 						set player's boots to iron boots named "&fIron Armor"
 						send action bar "&7You have gived the suit &6Iron Armor&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fGolden Armor":
-				if player doesn't have permission "hypercosmetics.openmenu.suits.give.goldenarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fGolden Armor":
+				player doesn't have permission "hypercosmetics.openmenu.suits.give.goldenarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
+					yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
 						close player's inventory
 						set player's helmet to golden helmet named "&fGolden Armor"
 						set player's chestplate to golden chestplate named "&fGolden Armor"
 						set player's leggings to golden leggings named "&fGolden Armor"
 						set player's boots to golden boots named "&fGolden Armor"
 						send action bar "&7You have gived the suit &6Golden Armor&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fDiamond Armor":
-				if player doesn't have permission "hypercosmetics.openmenu.suits.give.diamondarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fDiamond Armor":
+				player doesn't have permission "hypercosmetics.openmenu.suits.give.diamondarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
+					yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
 						close player's inventory
 						set player's helmet to diamond helmet named "&fDiamond Armor"
 						set player's chestplate to diamond chestplate named "&fDiamond Armor"
 						set player's leggings to diamond leggings named "&fDiamond Armor"
 						set player's boots to diamond boots named "&fDiamond Armor"
 						send action bar "&7You have gived the suit &6Diamond Armor&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fNetherite Armor":
-				if player doesn't have permission "hypercosmetics.openmenu.suits.give.netheritearmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fNetherite Armor":
+				player doesn't have permission "hypercosmetics.openmenu.suits.give.netheritearmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
+					yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
 						close player's inventory
 						set player's helmet to netherite helmet named "&fNetherite Armor"
 						set player's chestplate to netherite chestplate named "&fNetherite Armor"
 						set player's leggings to netherite leggings named "&fNetherite Armor"
 						set player's boots to netherite boots named "&fNetherite Armor"
 						send action bar "&7You have gived the suit &6Netherite Armor&7." to player
-						stop
 					else:
 						send "&4| &8x &cThis suit has been disabled by the server." to player
-						stop
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
-		if yaml value "language" from "config" = "English":
-			if name of event-slot = "&cClose the menu":
+		yaml value "language" from "config" = "English":
+			name of event-slot = "&cClose the menu":
 				close player's inventory
-				stop
-			if name of event-slot = "&6« &cPage Back":
+			name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-			if name of event-slot = "&cClear all messages":
-				if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} or {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} or {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
+			name of event-slot = "&cClear all messages":
+				{HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} or {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} or {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
 					close player's inventory
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 					send action bar "&cYou have cleared all messages." to player
-					stop
-			if name of event-slot = "&fMessage &b##01":
-				if player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.1" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fMessage &b##01":
+				player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.1" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+					yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
 						close player's inventory
 						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} 
 						wait 1 tick
 						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
 						send action bar "&7You have enabled this messages." to player
-						stop
 					else:
 						send "&4| &8x &cThis messages has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fMessage &b##02":
-				if player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.2" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fMessage &b##02":
+				player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.2" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+					yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
 						close player's inventory
 						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} 
 						wait 1 tick
 						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} to true
 						send action bar "&7You have enabled this messages." to player
-						stop
 					else:
 						send "&4| &8x &cThis messages has been disabled by the server." to player
-						stop
-			if name of event-slot = "&fMessage &b##03":
-				if player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.3" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fMessage &b##03":
+				player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.3" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+					yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
 						close player's inventory
 						delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*} 
 						wait 1 tick
 						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} to true
 						send action bar "&7You have enabled this messages." to player
-						stop
 					else:
 						send "&4| &8x &cThis messages has been disabled by the server." to player
-						stop
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuPetsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
-		if yaml value "language" from "config" = "English":
-			if name of event-slot = "&cClose the menu":
+		yaml value "language" from "config" = "English":
+			name of event-slot = "&cClose the menu":
 				close player's inventory
-				stop
-			if name of event-slot = "&6« &cPage Back":
+			name of event-slot = "&6« &cPage Back":
 				HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-			if name of event-slot = "&cClear all pets":
-				if {HyperCosmetics::%player's uuid%::Pets::king} is set:
+			name of event-slot = "&cClear all pets":
+				{HyperCosmetics::%player's uuid%::Pets::king} is set:
 					close player's inventory
 					loop all entities:
-						if name of loop-entity = "&7King of &c%player%":
+						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					send action bar "&cYou have cleared all pets." to player
-					stop
-			if name of event-slot = "&fKing":
-				if player doesn't have permission "hypercosmetics.openmenu.pets.give.king" or "hypercosmetics.openmenu.pets.give.*" or "hypercosmetics.openmenu.pets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
+			name of event-slot = "&fKing":
+				player doesn't have permission "hypercosmetics.openmenu.pets.give.king" or "hypercosmetics.openmenu.pets.give.*" or "hypercosmetics.openmenu.pets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
 				else:
-					if yaml value "cosmetics.pets.king.stats" from "config" = true:
+					yaml value "cosmetics.pets.king.stats" from "config" = true:
 						close player's inventory
 						delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 						delete {HyperCosmetics::%player's uuid%::Pets::*} 
@@ -840,459 +763,345 @@ on inventory click:
 						HyperCosmeticsPetsGive(player, "&7King of &c%player%", player's location)
 					else:
 						send "&4| &8x &cThis pets has been disabled by the server." to player
-						stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
+	yaml value "language" from "config" = "English":
+		yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
 				set join message to ""
 				broadcast "&c%player% &7has joined this server." to all worlds
-				stop
-		if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} is set:
+		yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} is set:
 				set join message to ""
 				broadcast "&c%player% &7has joined the better server of the world." to all worlds
-				stop
-		if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
+		yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
 				set join message to ""
 				broadcast "&c%player% &7has joined the worst server of the world." to all worlds
-				stop
 
 on quit:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
+	yaml value "language" from "config" = "English":
+		yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} is set:
 				set quit message to ""
 				broadcast "&c%player% &7has leaved this server." to all worlds
-				stop
-		if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} is set:
+		yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} is set:
 				set quit message to ""
 				broadcast "&c%player% &7has leaved the better server of the world." to all worlds
-				stop
-		if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
+		yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} is set:
 				set quit message to ""
 				broadcast "&c%player% &7has leaved the worst server of the world." to all worlds
-				stop
 
 on damage:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "anti-damage.stats" from "config" = true:
-		if victim = player:
+	yaml value "anti-damage.stats" from "config" = true:
+		victim = player:
 			cancel event
-			stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if yaml value "cosmetics.pets.king.stats" from "config" = true:
-			if {HyperCosmetics::%player's uuid%::Pets::king} is set:
+	yaml value "language" from "config" = "English":
+		yaml value "cosmetics.pets.king.stats" from "config" = true:
+			{HyperCosmetics::%player's uuid%::Pets::king} is set:
 				loop all entities:
-					if name of loop-entity = "&7King of &c%player%":
+					name of loop-entity = "&7King of &c%player%":
 						kill loop-entity
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					send action bar "&cYou have cleared all pets." to player
-					stop
 
 on damage:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
+	yaml value "language" from "config" = "English":
 		loop all players:
 			loop all entities:
-				if name of loop-entity-2 = "&7King of &c%loop-player%":
+				name of loop-entity-2 = "&7King of &c%loop-player%":
 					cancel event
-					stop
 
 on right click on armor stand:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
+	yaml value "language" from "config" = "English":
 		loop all players:
-			if name of clicked entity = "&7King of &c%loop-player%":
+			name of clicked entity = "&7King of &c%loop-player%":
 				cancel event
-				stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
+	yaml value "language" from "config" = "English":
 		remove all yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)" from player's inventory
-		if yaml value "item-join.stats" from "config" = true:
-			if player has permission "hypercosmetics.itemjoin" or "hypercosmetics.*":
+		yaml value "item-join.stats" from "config" = true:
+			player has permission "hypercosmetics.itemjoin" or "hypercosmetics.*":
 				set slot yaml value "item-join.slot" from "config" of player to yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)"
-				stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "cosmetics.gadgets.clear-join.stats" from "config" = true:
+	yaml value "cosmetics.gadgets.clear-join.stats" from "config" = true:
 		set slot yaml value "item-gadgets.slot" from "config" of player to air
 		set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
-		stop
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "cosmetics.suits.clear-join.stats" from "config" = true:
+	yaml value "cosmetics.suits.clear-join.stats" from "config" = true:
 		set player's helmet to air
 		set player's chestplate to air
 		set player's leggings to air
 		set player's boots to air
-		stop
 
 on right click:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+	yaml value "language" from "config" = "English":
+		event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
 			cancel event
 			HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+		event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
 			cancel event
-			if chance of 50%:
+			chance of 50%:
 				launch ball firework colored red, green and white at player's location timed 1
-				stop
-			if chance of 50%:
+			chance of 50%:
 				launch burst firework colored purple fading to blue at player's location timed 1
-				stop
-		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+		event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 			repair slot yaml value "item-gadgets.slot" from "config" of player
 			set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
-			stop
-		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+		event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 			cancel event
 			shoot snowball
-		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+		event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 			cancel event
 			strike lightning at player's location
-			stop
-		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+		event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 			cancel event
 			push player upwards with speed 0.5
-			stop
 
 on player move:
-	if player's tool = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+	player's tool = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 		load "plugins/HyperCosmetics/config.yml"
-		if y-location of player >= yaml value "cosmetics.gadgets.rocket.height-ylocation" from "config":
+		y-location of player >= yaml value "cosmetics.gadgets.rocket.height-ylocation" from "config":
 			teleport player to spawn of player's world
-			stop
 
 on left click:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+	yaml value "language" from "config" = "English":
+		event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+		event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+		event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = arrow named "&c&l↪ &7Ammunition":
+		event-item = arrow named "&c&l↪ &7Ammunition":
 			cancel event
-			stop
-		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+		event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+		event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+		event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = leather helmet named "&fLeather Armor":
+		event-item = leather helmet named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail helmet named "&fChainmail Armor":
+		event-item = chainmail helmet named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron helmet named "&fIron Armor":
+		event-item = iron helmet named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden helmet named "&fGolden Armor":
+		event-item = golden helmet named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond helmet named "&fDiamond Armor":
+		event-item = diamond helmet named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite helmet named "&fNetherite Armor":
+		event-item = netherite helmet named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather chestplate named "&fLeather Armor":
+		event-item = leather chestplate named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail chestplate named "&fChainmail Armor":
+		event-item = chainmail chestplate named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron chestplate named "&fIron Armor":
+		event-item = iron chestplate named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden chestplate named "&fGolden Armor":
+		event-item = golden chestplate named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond chestplate named "&fDiamond Armor":
+		event-item = diamond chestplate named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite chestplate named "&fNetherite Armor":
+		event-item = netherite chestplate named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather leggings named "&fLeather Armor":
+		event-item = leather leggings named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail leggings named "&fChainmail Armor":
+		event-item = chainmail leggings named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron leggings named "&fIron Armor":
+		event-item = iron leggings named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden leggings named "&fGolden Armor":
+		event-item = golden leggings named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond leggings named "&fDiamond Armor":
+		event-item = diamond leggings named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite leggings named "&fNetherite Armor":
+		event-item = netherite leggings named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather boots named "&fLeather Armor":
+		event-item = leather boots named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail boots named "&fChainmail Armor":
+		event-item = chainmail boots named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron boots named "&fIron Armor":
+		event-item = iron boots named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden boots named "&fGolden Armor":
+		event-item = golden boots named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond boots named "&fDiamond Armor":
+		event-item = diamond boots named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite boots named "&fNetherite Armor":
+		event-item = netherite boots named "&fNetherite Armor":
 			cancel event
-			stop
 
 on projectile hit:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if shooter's tool = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
-			if projectile is an arrow:
+	yaml value "language" from "config" = "English":
+		shooter's tool = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+			projectile is an arrow:
 				teleport the shooter to location of projectile
 				clear projectile
-				stop
 
 on inventory click:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
-			if yaml value "item-join.inventory-change-slot" from "config" = false:
+	yaml value "language" from "config" = "English":
+		event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+			yaml value "item-join.inventory-change-slot" from "config" = false:
 				cancel event
-				stop
-		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+		event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+		event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = arrow named "&c&l↪ &7Ammunition":
+		event-item = arrow named "&c&l↪ &7Ammunition":
 			cancel event
-			stop
-		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+		event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+		event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+		event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = leather helmet named "&fLeather Armor":
+		event-item = leather helmet named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail helmet named "&fChainmail Armor":
+		event-item = chainmail helmet named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron helmet named "&fIron Armor":
+		event-item = iron helmet named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden helmet named "&fGolden Armor":
+		event-item = golden helmet named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond helmet named "&fDiamond Armor":
+		event-item = diamond helmet named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite helmet named "&fNetherite Armor":
+		event-item = netherite helmet named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather chestplate named "&fLeather Armor":
+		event-item = leather chestplate named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail chestplate named "&fChainmail Armor":
+		event-item = chainmail chestplate named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron chestplate named "&fIron Armor":
+		event-item = iron chestplate named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden chestplate named "&fGolden Armor":
+		event-item = golden chestplate named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond chestplate named "&fDiamond Armor":
+		event-item = diamond chestplate named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite chestplate named "&fNetherite Armor":
+		event-item = netherite chestplate named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather leggings named "&fLeather Armor":
+		event-item = leather leggings named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail leggings named "&fChainmail Armor":
+		event-item = chainmail leggings named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron leggings named "&fIron Armor":
+		event-item = iron leggings named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden leggings named "&fGolden Armor":
+		event-item = golden leggings named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond leggings named "&fDiamond Armor":
+		event-item = diamond leggings named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite leggings named "&fNetherite Armor":
+		event-item = netherite leggings named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather boots named "&fLeather Armor":
+		event-item = leather boots named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail boots named "&fChainmail Armor":
+		event-item = chainmail boots named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron boots named "&fIron Armor":
+		event-item = iron boots named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden boots named "&fGolden Armor":
+		event-item = golden boots named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond boots named "&fDiamond Armor":
+		event-item = diamond boots named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite boots named "&fNetherite Armor":
+		event-item = netherite boots named "&fNetherite Armor":
 			cancel event
-			stop
 
 on drop:
 	load "plugins/HyperCosmetics/config.yml"
-	if yaml value "language" from "config" = "English":
-		if event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
-			if yaml value "item-join.drop" from "config" = false:
+	yaml value "language" from "config" = "English":
+		event-item = yaml value "item-join.itemtype" from "config" named "&c&l↪ &7Cosmetics (&eRight-Click&7)":
+			yaml value "item-join.drop" from "config" = false:
 				cancel event
-				stop
-		if event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
+		event-item = firework named "&c&l↪ &7Firework (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
+		event-item = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = arrow named "&c&l↪ &7Ammunition":
+		event-item = arrow named "&c&l↪ &7Ammunition":
 			cancel event
-			stop
-		if event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
+		event-item = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
+		event-item = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
+		event-item = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 			cancel event
-			stop
-		if event-item = leather helmet named "&fLeather Armor":
+		event-item = leather helmet named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail helmet named "&fChainmail Armor":
+		event-item = chainmail helmet named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron helmet named "&fIron Armor":
+		event-item = iron helmet named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden helmet named "&fGolden Armor":
+		event-item = golden helmet named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond helmet named "&fDiamond Armor":
+		event-item = diamond helmet named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite helmet named "&fNetherite Armor":
+		event-item = netherite helmet named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather chestplate named "&fLeather Armor":
+		event-item = leather chestplate named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail chestplate named "&fChainmail Armor":
+		event-item = chainmail chestplate named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron chestplate named "&fIron Armor":
+		event-item = iron chestplate named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden chestplate named "&fGolden Armor":
+		event-item = golden chestplate named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond chestplate named "&fDiamond Armor":
+		event-item = diamond chestplate named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite chestplate named "&fNetherite Armor":
+		event-item = netherite chestplate named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather leggings named "&fLeather Armor":
+		event-item = leather leggings named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail leggings named "&fChainmail Armor":
+		event-item = chainmail leggings named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron leggings named "&fIron Armor":
+		event-item = iron leggings named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden leggings named "&fGolden Armor":
+		event-item = golden leggings named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond leggings named "&fDiamond Armor":
+		event-item = diamond leggings named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite leggings named "&fNetherite Armor":
+		event-item = netherite leggings named "&fNetherite Armor":
 			cancel event
-			stop
-		if event-item = leather boots named "&fLeather Armor":
+		event-item = leather boots named "&fLeather Armor":
 			cancel event
-			stop
-		if event-item = chainmail boots named "&fChainmail Armor":
+		event-item = chainmail boots named "&fChainmail Armor":
 			cancel event
-			stop
-		if event-item = iron boots named "&fIron Armor":
+		event-item = iron boots named "&fIron Armor":
 			cancel event
-			stop
-		if event-item = golden boots named "&fGolden Armor":
+		event-item = golden boots named "&fGolden Armor":
 			cancel event
-			stop
-		if event-item = diamond boots named "&fDiamond Armor":
+		event-item = diamond boots named "&fDiamond Armor":
 			cancel event
-			stop
-		if event-item = netherite boots named "&fNetherite Armor":
+		event-item = netherite boots named "&fNetherite Armor":
 			cancel event
-			stop
 
 command /hypercosmetics [<text>] [<text>]:
 	aliases: hypercosmetics:hypercosmetics, hc, hypercosmetics:hc
 	description: &fHyperCosmetics command /hypercosmetics.
 	trigger:
-		if arg 1 isn't set:
+		arg 1 isn't set:
 			HyperCosmeticsHelp(sender, "HyperCosmeticsCMD")
 		else:
-			if arg 1 != "info" or "reload" or "menu":
+			arg 1 != "info" or "reload" or "menu":
 				HyperCosmeticsHelp(sender, "HyperCosmeticsCMD")
-			if arg 1 = "info":
+			arg 1 = "info":
 				load "plugins/HyperCosmetics/config.yml"
-				if yaml value "language" from "config" = "English":
+				yaml value "language" from "config" = "English":
 					send "" to sender
 					send "&8| &8x &6Help:" to sender
 					send "" to sender
@@ -1303,22 +1112,20 @@ command /hypercosmetics [<text>] [<text>]:
 					send "&8| &fPlugin requirements: &cSkript&7, &cSkBee &7and &cSkript-YAML" to sender
 					send "&8| &fAll languages of skript: &cEnglish" to sender
 					send "" to sender
-					stop
-			if arg 1 = "reload":
+			arg 1 = "reload":
 				make console execute command "/sk reload HyperCosmetics"
 				load "plugins/HyperCosmetics/config.yml"
-				if yaml value "language" from "config" = "English":
+				yaml value "language" from "config" = "English":
 					send "&7You have been reloaded this skript." to sender
-				stop
-			if arg 1 = "menu":
-				if sender = console:
+			arg 1 = "menu":
+				sender = console:
 					HyperCosmeticsHelp(console, "HyperCosmeticsCMD")
-				if sender = player:
+				sender = player:
 					HyperCosmeticsOpenMenu(player, "OpenMenuMain")
 
 on command "/hypercosmetics" or "/hypercosmetics:hypercosmetics" or "hc" or "hypercosmetics:hc":
-	if sender = player:
-		if player doesn't have permission "hypercosmetics.hypercosmetics" or "hypercosmetics.*":
+	sender = player:
+		player doesn't have permission "hypercosmetics.hypercosmetics" or "hypercosmetics.*":
 			cancel event
 			HyperCosmeticsNoPermission(player)
 
@@ -1326,192 +1133,170 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hgadgets
 	description: &fHyperCosmetics command /hgadgets.
 	trigger:
-		if sender = player:
-			if arg 1 isn't set:
+		sender = player:
+			arg 1 isn't set:
 				HyperCosmeticsHelp(player, "HGadgetsCMD")
 			else:
-				if arg 1 != "menu" or "give" or "clear" or "list":
+				arg 1 != "menu" or "give" or "clear" or "list":
 					HyperCosmeticsHelp(player, "HGadgetsCMD")
-				if arg 1 = "menu":
-					if player doesn't have permission "hypercosmetics.hgadgets.openmenu" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+				arg 1 = "menu":
+					player doesn't have permission "hypercosmetics.hgadgets.openmenu" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						HyperCosmeticsOpenMenu(player, "OpenMenuGadgetsMain")
-				if arg 1 = "give":
-					if player doesn't have permission "hypercosmetics.hgadgets.give" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+				arg 1 = "give":
+					player doesn't have permission "hypercosmetics.hgadgets.give" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							HyperCosmeticsHelp(player, "HGadgetsCMD")
 						else:
-							if arg 2 != "firework" or "bow-teleport" or "snowball" or "lightning" or "rocket":
+							arg 2 != "firework" or "bow-teleport" or "snowball" or "lightning" or "rocket":
 								HyperCosmeticsCMDList(player, "Gadgets")
 							else:
-								if arg 3 isn't set:
-									if arg 2 = "firework":
-										if player doesn't have permission "hypercosmetics.hgadgets.give.firework" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+								arg 3 isn't set:
+									arg 2 = "firework":
+										player doesn't have permission "hypercosmetics.hgadgets.give.firework" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
 													set slot yaml value "item-gadgets.slot" from "config" of player to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Firework&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis gadget has been disabled by the server." to player
-													stop
-									if arg 2 = "bow-teleport":
-										if player doesn't have permission "hypercosmetics.hgadgets.give.bowteleport" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+									arg 2 = "bow-teleport":
+										player doesn't have permission "hypercosmetics.hgadgets.give.bowteleport" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
 													set slot yaml value "item-gadgets.slot" from "config" of player to bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)"
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
 													send action bar "&7You have gived the gadget &6Bed-Teleport&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis gadget has been disabled by the server." to player
-													stop
-									if arg 2 = "snowball":
-										if player doesn't have permission "hypercosmetics.hgadgets.give.snowball" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+									arg 2 = "snowball":
+										player doesn't have permission "hypercosmetics.hgadgets.give.snowball" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
 													set slot yaml value "item-gadgets.slot" from "config" of player to snowball named "&c&l↪ &7Snowball (&eRight-Click&7)"
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Snowball&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis gadget has been disabled by the server." to player
-													stop
-									if arg 2 = "lightning":
-										if player doesn't have permission "hypercosmetics.hgadgets.give.lightning" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+									arg 2 = "lightning":
+										player doesn't have permission "hypercosmetics.hgadgets.give.lightning" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
 													set slot yaml value "item-gadgets.slot" from "config" of player to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Lightning&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis gadget has been disabled by the server." to player
-													stop
-									if arg 2 = "rocket":
-										if player doesn't have permission "hypercosmetics.hgadgets.give.rocket" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+									arg 2 = "rocket":
+										player doesn't have permission "hypercosmetics.hgadgets.give.rocket" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
 													set slot yaml value "item-gadgets.slot" from "config" of player to feather named "&c&l↪ &7Rocket (&eRight-Click&7)"
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Rocket&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis gadget has been disabled by the server." to player
-													stop
 								else:
-									if player doesn't have permission "hypercosmetics.hgadgets.give.others" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+									player doesn't have permission "hypercosmetics.hgadgets.give.others" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
 									else:
-										if arg 3 is offline:
+										arg 3 is offline:
 											HyperCosmeticsCMDOfflinePlayer(player)
 										else:
-											if arg 2 = "firework":
+											arg 2 = "firework":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.gadgets.firework.stats" from "config" = true:
 														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to firework named "&c&l↪ &7Firework (&eRight-Click&7)"
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Firework &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis gadget has been disabled by the server." to player
-														stop
-											if arg 2 = "bow-teleport":
+											arg 2 = "bow-teleport":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.gadgets.bow-teleport.stats" from "config" = true:
 														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)"
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to arrow named "&c&l↪ &7Ammunition"
 														send "&7You have gived the gadget &6Bow-Teleport &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis gadget has been disabled by the server." to player
-														stop
-											if arg 2 = "snowball":
+											arg 2 = "snowball":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.gadgets.snowball.stats" from "config" = true:
 														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to snowball named "&c&l↪ &7Snowball (&eRight-Click&7)"
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Snowball &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis gadget has been disabled by the server." to player
-														stop
-											if arg 2 = "lightning":
+											arg 2 = "lightning":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.gadgets.lightning.stats" from "config" = true:
 														set slot yaml value "item-gadgets.slot" from "config" of arg 3 to blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)"
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Lightning &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis gadget has been disabled by the server." to player
-														stop
-											if arg 2 = "rocket":
+											arg 2 = "rocket":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.gadgets.rocket.stats" from "config" = true:
 														set slot yaml value "item-gadgets.slot" from "config" of player to feather named "&c&l↪ &7Rocket (&eRight-Click&7)"
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 														send action bar "&7You have gived the gadget &6Rocket&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis gadget has been disabled by the server." to player
-														stop
-				if arg 1 = "clear":
-					if player doesn't have permission "hypercosmetics.hgadgets.clear" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+				arg 1 = "clear":
+					player doesn't have permission "hypercosmetics.hgadgets.clear" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							load "plugins/HyperCosmetics/config.yml"
-							if yaml value "language" from "config" = "English":
+							yaml value "language" from "config" = "English":
 								set slot yaml value "item-gadgets.slot" from "config" of player to air
 								set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 								send action bar "&cYou have cleared all gadgets." to player
-								stop
 						else:
-							if player doesn't have permission "hypercosmetics.hgadgets.clear.others" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
+							player doesn't have permission "hypercosmetics.hgadgets.clear.others" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 								HyperCosmeticsNoPermission(player)
 							else:
-								if arg 2 parsed as offline player is offline:
+								arg 2 parsed as offline player is offline:
 									HyperCosmeticsCMDOfflinePlayer(player)
 								else:
 									load "plugins/HyperCosmetics/config.yml"
-									if yaml value "language" from "config" = "English":
+									yaml value "language" from "config" = "English":
 										set slot yaml value "item-gadgets.slot" from "config" of arg 2 parsed as offline player to air
 										set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 2 parsed as offline player to air
 										send "&7You have cleared all gadgets &7for the player &6%arg 2 parsed as offline player%&7." to player
-										stop
-				if arg 1 = "list":
+				arg 1 = "list":
 					HyperCosmeticsCMDList(player, "Gadgets")
-		if sender = console:
+		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
 
 on command "/hgadgets" or "/hypercosmetics:hgadgets":
-	if sender = player:
-		if player doesn't have permission "hypercosmetics.hgadgets" or "hypercosmetics.*":
+	sender = player:
+		player doesn't have permission "hypercosmetics.hgadgets" or "hypercosmetics.*":
 			cancel event
 			HyperCosmeticsNoPermission(player)
 
@@ -1519,258 +1304,232 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hsuits
 	description: &fHyperCosmetics command /hsuits.
 	trigger:
-		if sender = player:
-			if arg 1 isn't set:
+		sender = player:
+			arg 1 isn't set:
 				HyperCosmeticsHelp(player, "HSuitsCMD")
 			else:
-				if arg 1 != "menu" or "give" or "clear" or "list":
+				arg 1 != "menu" or "give" or "clear" or "list":
 					HyperCosmeticsHelp(player, "HSuitsCMD")
-				if arg 1 = "menu":
-					if player doesn't have permission "hypercosmetics.hsuits.openmenu" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+				arg 1 = "menu":
+					player doesn't have permission "hypercosmetics.hsuits.openmenu" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						HyperCosmeticsOpenMenu(player, "OpenMenuSuitsMain")
-				if arg 1 = "give":
-					if player doesn't have permission "hypercosmetics.hsuits.give" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+				arg 1 = "give":
+					player doesn't have permission "hypercosmetics.hsuits.give" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							HyperCosmeticsHelp(player, "HSuitsCMD")
 						else:
-							if arg 2 != "leather-armor" or "chainmail-armor" or "iron-armor" or "golden-armor" or "diamond-armor" or "netherite-armor":
+							arg 2 != "leather-armor" or "chainmail-armor" or "iron-armor" or "golden-armor" or "diamond-armor" or "netherite-armor":
 								HyperCosmeticsCMDList(player, "Suits")
 							else:
-								if arg 3 isn't set:
-									if arg 2 = "leather-armor":
-										if player doesn't have permission "hypercosmetics.hsuits.give.leatherarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+								arg 3 isn't set:
+									arg 2 = "leather-armor":
+										player doesn't have permission "hypercosmetics.hsuits.give.leatherarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
 													close player's inventory
 													set player's helmet to leather helmet named "&fLeather Armor"
 													set player's chestplate to leather chestplate named "&fLeather Armor"
 													set player's leggings to leather leggings named "&fLeather Armor"
 													set player's boots to leather boots named "&fLeather Armor"
 													send action bar "&7You have gived the suit &6Leather Armor&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis suit has been disabled by the server." to player
-													stop
-									if arg 2 = "chainmail-armor":
-										if player doesn't have permission "hypercosmetics.hsuits.give.chainmailarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+									arg 2 = "chainmail-armor":
+										player doesn't have permission "hypercosmetics.hsuits.give.chainmailarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
 													close player's inventory
 													set player's helmet to chainmail helmet named "&fChainmail Armor"
 													set player's chestplate to chainmail chestplate named "&fChainmail Armor"
 													set player's leggings to chainmail leggings named "&fChainmail Armor"
 													set player's boots to chainmail boots named "&fChainmail Armor"
 													send action bar "&7You have gived the suit &fChainmail Armor&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis suit has been disabled by the server." to player
-													stop
-									if arg 2 = "iron-armor":
-										if player doesn't have permission "hypercosmetics.hsuits.give.ironarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+									arg 2 = "iron-armor":
+										player doesn't have permission "hypercosmetics.hsuits.give.ironarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
 													close player's inventory
 													set player's helmet to iron helmet named "&fIron Armor"
 													set player's chestplate to iron chestplate named "&fIron Armor"
 													set player's leggings to iron leggings named "&fIron Armor"
 													set player's boots to iron boots named "&fIron Armor"
 													send action bar "&7You have gived the suit &fIron Armor&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis suit has been disabled by the server." to player
-													stop
-									if arg 2 = "golden-armor":
-										if player doesn't have permission "hypercosmetics.hsuits.give.goldenarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+									arg 2 = "golden-armor":
+										player doesn't have permission "hypercosmetics.hsuits.give.goldenarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
 													close player's inventory
 													set player's helmet to golden helmet named "&fGolden Armor"
 													set player's chestplate to golden chestplate named "&fGolden Armor"
 													set player's leggings to golden leggings named "&fGolden Armor"
 													set player's boots to golden boots named "&fGolden Armor"
 													send action bar "&7You have gived the suit &fGolden Armor&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis suit has been disabled by the server." to player
-													stop
-									if arg 2 = "diamond-armor":
-										if player doesn't have permission "hypercosmetics.hsuits.give.diamondarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+									arg 2 = "diamond-armor":
+										player doesn't have permission "hypercosmetics.hsuits.give.diamondarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
 													close player's inventory
 													set player's helmet to diamond helmet named "&fDiamond Armor"
 													set player's chestplate to diamond chestplate named "&fDiamond Armor"
 													set player's leggings to diamond leggings named "&fDiamond Armor"
 													set player's boots to diamond boots named "&fDiamond Armor"
 													send action bar "&7You have gived the suit &fDiamond Armor&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis suit has been disabled by the server." to player
-													stop
-									if arg 2 = "netherite-armor":
-										if player doesn't have permission "hypercosmetics.hsuits.give.netheritearmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+									arg 2 = "netherite-armor":
+										player doesn't have permission "hypercosmetics.hsuits.give.netheritearmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
 													close player's inventory
 													set player's helmet to netherite helmet named "&fNetherite Armor"
 													set player's chestplate to netherite chestplate named "&fNetherite Armor"
 													set player's leggings to netherite leggings named "&fNetherite Armor"
 													set player's boots to netherite boots named "&fNetherite Armor"
 													send action bar "&7You have gived the suit &fNetherite Armor&7." to player
-													stop
 												else:
 													send "&4| &8x &cThis suit has been disabled by the server." to player
-													stop
 								else:
-									if player doesn't have permission "hypercosmetics.hsuits.give.others" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+									player doesn't have permission "hypercosmetics.hsuits.give.others" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
 									else:
-										if arg 3 is offline:
+										arg 3 is offline:
 											HyperCosmeticsCMDOfflinePlayer(player)
 										else:
-											if arg 2 = "leather-armor":
+											arg 2 = "leather-armor":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.suits.leather-armor.stats" from "config" = true:
 														close arg 3's inventory
 														set arg 3's helmet to leather helmet named "&fLeather Armor"
 														set arg 3's chestplate to leather chestplate named "&fLeather Armor"
 														set arg 3's leggings to leather leggings named "&fLeather Armor"
 														set arg 3's boots to leather boots named "&fLeather Armor"
 														send "&7You have gived the suits &6Leather-Armor &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis suit has been disabled by the server." to player
-														stop
-											if arg 2 = "chainmail-armor":
+											arg 2 = "chainmail-armor":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.suits.chainmail-armor.stats" from "config" = true:
 														close arg 3's inventory
 														set arg 3's helmet to chainmail helmet named "&fChainmail Armor"
 														set arg 3's chestplate to chainmail chestplate named "&fChainmail Armor"
 														set arg 3's leggings to chainmail leggings named "&fChainmail Armor"
 														set arg 3's boots to chainmail boots named "&fChainmail Armor"
 														send "&7You have gived the suits &6Chainmail-Armor &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis suit has been disabled by the server." to player
-														stop
-											if arg 2 = "iron-armor":
+											arg 2 = "iron-armor":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.suits.iron-armor.stats" from "config" = true:
 														close arg 3's inventory
 														set arg 3's helmet to iron helmet named "&fIron Armor"
 														set arg 3's chestplate to iron chestplate named "&fIron Armor"
 														set arg 3's leggings to iron leggings named "&fIron Armor"
 														set arg 3's boots to iron boots named "&fIron Armor"
 														send "&7You have gived the suits &6Iron-Armor &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis suit has been disabled by the server." to player
-														stop
-											if arg 2 = "golden-armor":
+											arg 2 = "golden-armor":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.suits.golden-armor.stats" from "config" = true:
 														close arg 3's inventory
 														set arg 3's helmet to golden helmet named "&fGolden Armor"
 														set arg 3's chestplate to golden chestplate named "&fGolden Armor"
 														set arg 3's leggings to golden leggings named "&fGolden Armor"
 														set arg 3's boots to golden boots named "&fGolden Armor"
 														send "&7You have gived the suits &6Golden-Armor &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis suit has been disabled by the server." to player
-														stop
-											if arg 2 = "diamond-armor":
+											arg 2 = "diamond-armor":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.suits.diamond-armor.stats" from "config" = true:
 														close arg 3's inventory
 														set arg 3's helmet to diamond helmet named "&fDiamond Armor"
 														set arg 3's chestplate to diamond chestplate named "&fDiamond Armor"
 														set arg 3's leggings to diamond leggings named "&fDiamond Armor"
 														set arg 3's boots to diamond boots named "&fDiamond Armor"
 														send "&7You have gived the suits &6Diamond-Armor &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis suit has been disabled by the server." to player
-														stop
-											if arg 2 = "netherite-armor":
+											arg 2 = "netherite-armor":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.suits.netherite-armor.stats" from "config" = true:
 														close arg 3's inventory
 														set arg 3's helmet to netherite helmet named "&fNetherite Armor"
 														set arg 3's chestplate to netherite chestplate named "&fNetherite Armor"
 														set arg 3's leggings to netherite leggings named "&fNetherite Armor"
 														set arg 3's boots to netherite boots named "&fNetherite Armor"
 														send "&7You have gived the suits &6Netherite-Armor &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis suit has been disabled by the server." to player
-														stop
-				if arg 1 = "clear":
-					if player doesn't have permission "hypercosmetics.hsuits.clear" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+				arg 1 = "clear":
+					player doesn't have permission "hypercosmetics.hsuits.clear" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							load "plugins/HyperCosmetics/config.yml"
-							if yaml value "language" from "config" = "English":
+							yaml value "language" from "config" = "English":
 								set player's helmet to air
 								set player's chestplate to air
 								set player's leggings to air
 								set player's boots to air
 								send action bar "&cYou have cleared all suits." to player
-								stop
 						else:
-							if player doesn't have permission "hypercosmetics.hsuits.clear.others" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
+							player doesn't have permission "hypercosmetics.hsuits.clear.others" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 								HyperCosmeticsNoPermission(player)
 							else:
-								if arg 2 parsed as offline player is offline:
+								arg 2 parsed as offline player is offline:
 									HyperCosmeticsCMDOfflinePlayer(player)
 								else:
 									load "plugins/HyperCosmetics/config.yml"
-									if yaml value "language" from "config" = "English":
+									yaml value "language" from "config" = "English":
 										close player's inventory
 										set arg 2 parsed as offline player's helmet to air
 										set arg 2 parsed as offline player's chestplate to air
 										set arg 2 parsed as offline player's leggings to air
 										set arg 2 parsed as offline player's boots to air
 										send "&7You have cleared all suits &7for the player &6%arg 2 parsed as offline player%&7." to player
-										stop
-				if arg 1 = "list":
+				arg 1 = "list":
 					HyperCosmeticsCMDList(player, "Suits")
-		if sender = console:
+		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
 
 on command "/hsuits" or "/hypercosmetics:hsuits":
-	if sender = player:
-		if player doesn't have permission "hypercosmetics.hsuits" or "hypercosmetics.*":
+	sender = player:
+		player doesn't have permission "hypercosmetics.hsuits" or "hypercosmetics.*":
 			cancel event
 			HyperCosmeticsNoPermission(player)
 
@@ -1778,146 +1537,132 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hjoinquitmessages
 	description: &fHyperCosmetics command /hjoinquitmessages.
 	trigger:
-		if sender = player:
-			if arg 1 isn't set:
+		sender = player:
+			arg 1 isn't set:
 				HyperCosmeticsHelp(player, "HJoinQuitMessagesCMD")
 			else:
-				if arg 1 != "menu" or "give" or "clear" or "list":
+				arg 1 != "menu" or "give" or "clear" or "list":
 					HyperCosmeticsHelp(player, "HJoinQuitMessagesCMD")
-				if arg 1 = "menu":
-					if player doesn't have permission "hypercosmetics.hjoinquitmessages.openmenu" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+				arg 1 = "menu":
+					player doesn't have permission "hypercosmetics.hjoinquitmessages.openmenu" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						HyperCosmeticsOpenMenu(player, "OpenMenuJoinQuitMessagesMain")
-				if arg 1 = "give":
-					if player doesn't have permission "hypercosmetics.hjoinquitmessages.give" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+				arg 1 = "give":
+					player doesn't have permission "hypercosmetics.hjoinquitmessages.give" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							HyperCosmeticsHelp(player, "HJoinQuitMessagesCMD")
 						else:
-							if arg 2 != "message01" or "message02" or "message03":
+							arg 2 != "message01" or "message02" or "message03":
 								HyperCosmeticsCMDList(player, "JoinQuitMessages")
 							else:
-								if arg 3 isn't set:
-									if arg 2 = "message01":
-										if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.1" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+								arg 3 isn't set:
+									arg 2 = "message01":
+										player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.1" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
 													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 													wait 1 tick
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
 													send action bar "&7You have enabled this messages." to player
-													stop
 												else:
 													send "&4| &8x &cThis messages has been disabled by the server." to player
-													stop
-									if arg 2 = "message02":
-										if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.2" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+									arg 2 = "message02":
+										player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.2" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
 													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 													wait 1 tick
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} to true
 													send action bar "&7You have enabled this messages." to player
-													stop
 												else:
 													send "&4| &8x &cThis messages has been disabled by the server." to player
-													stop
-									if arg 2 = "message03":
-										if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.3" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+									arg 2 = "message03":
+										player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.3" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
 													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 													wait 1 tick
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} to true
 													send action bar "&7You have enabled this messages." to player
-													stop
 												else:
 													send "&4| &8x &cThis messages has been disabled by the server." to player
-													stop
 								else:
-									if player doesn't have permission "hypercosmetics.hjoinquitmessages.give.others" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+									player doesn't have permission "hypercosmetics.hjoinquitmessages.give.others" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
 									else:
-										if arg 3 is offline:
+										arg 3 is offline:
 											HyperCosmeticsCMDOfflinePlayer(player)
 										else:
-											if arg 2 = "message01":
+											arg 2 = "message01":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
 														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
 														wait 1 tick
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message01} to true
 														send "&7You have enabled the message &6Message01 &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis messages has been disabled by the server." to player
-														stop
-											if arg 2 = "message02":
+											arg 2 = "message02":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" = true:
 														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
 														wait 1 tick
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message02} to true
 														send "&7You have enabled the message &6Message02 &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis messages has been disabled by the server." to player
-														stop
-											if arg 2 = "message03":
+											arg 2 = "message03":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
 														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
 														wait 1 tick
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message03} to true
 														send "&7You have enabled the message &6Message03 &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis messages has been disabled by the server." to player
-														stop
-				if arg 1 = "clear":
-					if player doesn't have permission "hypercosmetics.hjoinquitmessages.clear" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+				arg 1 = "clear":
+					player doesn't have permission "hypercosmetics.hjoinquitmessages.clear" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							load "plugins/HyperCosmetics/config.yml"
-							if yaml value "language" from "config" = "English":
+							yaml value "language" from "config" = "English":
 								delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 								send action bar "&cYou have cleared all messages." to player
-								stop
 						else:
-							if player doesn't have permission "hypercosmetics.hjoinquitmessages.clear.others" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
+							player doesn't have permission "hypercosmetics.hjoinquitmessages.clear.others" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 								HyperCosmeticsNoPermission(player)
 							else:
-								if arg 2 parsed as offline player is offline:
+								arg 2 parsed as offline player is offline:
 									HyperCosmeticsCMDOfflinePlayer(player)
 								else:
 									load "plugins/HyperCosmetics/config.yml"
-									if yaml value "language" from "config" = "English":
+									yaml value "language" from "config" = "English":
 										delete {HyperCosmetics::%arg 2 parsed as offline player's uuid%::JoinQuitMessages::*}
 										send "&7You have cleared all messages &7for the player &6%arg 2 parsed as offline player%&7." to player
-										stop
-				if arg 1 = "list":
+				arg 1 = "list":
 					HyperCosmeticsCMDList(player, "JoinQuitMessages")
-		if sender = console:
+		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
 
 on command "/hjoinquitmessages" or "/hypercosmetics:hjoinquitmessages":
-	if sender = player:
-		if player doesn't have permission "hypercosmetics.hjoinquitmessages" or "hypercosmetics.*":
+	sender = player:
+		player doesn't have permission "hypercosmetics.hjoinquitmessages" or "hypercosmetics.*":
 			cancel event
 			HyperCosmeticsNoPermission(player)
 
@@ -1925,99 +1670,93 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hpets
 	description: &fHyperCosmetics command /hpets.
 	trigger:
-		if sender = player:
-			if arg 1 isn't set:
+		sender = player:
+			arg 1 isn't set:
 				HyperCosmeticsHelp(player, "HPetsCMD")
 			else:
-				if arg 1 != "menu" or "give" or "clear" or "list":
+				arg 1 != "menu" or "give" or "clear" or "list":
 					HyperCosmeticsHelp(player, "HPetsCMD")
-				if arg 1 = "menu":
-					if player doesn't have permission "hypercosmetics.pets.openmenu" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+				arg 1 = "menu":
+					player doesn't have permission "hypercosmetics.pets.openmenu" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						HyperCosmeticsOpenMenu(player, "OpenMenuPetsMain")
-				if arg 1 = "give":
-					if player doesn't have permission "hypercosmetics.pets.give" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+				arg 1 = "give":
+					player doesn't have permission "hypercosmetics.pets.give" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							HyperCosmeticsHelp(player, "HPetsCMD")
 						else:
-							if arg 2 != "king":
+							arg 2 != "king":
 								HyperCosmeticsCMDList(player, "Pets")
 							else:
-								if arg 3 isn't set:
-									if arg 2 = "king":
-										if player doesn't have permission "hypercosmetics.pets.give.king" or "hypercosmetics.pets.give.*" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+								arg 3 isn't set:
+									arg 2 = "king":
+										player doesn't have permission "hypercosmetics.pets.give.king" or "hypercosmetics.pets.give.*" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
 										else:
 											load "plugins/HyperCosmetics/config.yml"
-											if yaml value "language" from "config" = "English":
-												if yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
+											yaml value "language" from "config" = "English":
+												yaml value "cosmetics.joinquit-message.messages-1.stats" from "config" = true:
 													delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
 													wait 1 tick
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
 													send action bar "&7You have enabled this messages." to player
-													stop
 												else:
 													send "&4| &8x &cThis messages has been disabled by the server." to player
-													stop
 								else:
-									if player doesn't have permission "hypercosmetics.pets.give.others" or "hypercosmetics.pets.give.*" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+									player doesn't have permission "hypercosmetics.pets.give.others" or "hypercosmetics.pets.give.*" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
 									else:
-										if arg 3 is offline:
+										arg 3 is offline:
 											HyperCosmeticsCMDOfflinePlayer(player)
 										else:
-											if arg 2 = "king":
+											arg 2 = "king":
 												load "plugins/HyperCosmetics/config.yml"
-												if yaml value "language" from "config" = "English":
-													if yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
+												yaml value "language" from "config" = "English":
+													yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" = true:
 														delete {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::*}
 														wait 1 tick
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message01} to true
 														send "&7You have enabled the message &6Message01 &7for the player &6%arg 3%&7." to player
-														stop
 													else:
 														send "&4| &8x &cThis messages has been disabled by the server." to player
-														stop
-				if arg 1 = "clear":
-					if player doesn't have permission "hypercosmetics.pets.clear" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+				arg 1 = "clear":
+					player doesn't have permission "hypercosmetics.pets.clear" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
-						if arg 2 isn't set:
+						arg 2 isn't set:
 							load "plugins/HyperCosmetics/config.yml"
-							if yaml value "language" from "config" = "English":
+							yaml value "language" from "config" = "English":
 								loop all entities:
-									if name of loop-entity = "&7King of &c%player%":
+									name of loop-entity = "&7King of &c%player%":
 										kill loop-entity
 								delete {HyperCosmetics::%player's uuid%::Pets::*}
 								delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 								send action bar "&cYou have cleared all pets." to player
-								stop
 						else:
-							if player doesn't have permission "hypercosmetics.pets.clear.others"  or "hypercosmetics.pets.*" or "hypercosmetics.*":
+							player doesn't have permission "hypercosmetics.pets.clear.others"  or "hypercosmetics.pets.*" or "hypercosmetics.*":
 								HyperCosmeticsNoPermission(player)
 							else:
-								if arg 2 parsed as offline player is offline:
+								arg 2 parsed as offline player is offline:
 									HyperCosmeticsCMDOfflinePlayer(player)
 								else:
 									load "plugins/HyperCosmetics/config.yml"
-									if yaml value "language" from "config" = "English":
+									yaml value "language" from "config" = "English":
 										loop all entities:
-											if name of loop-entity = "&7King of &c%arg 2 parsed as offline player%":
+											name of loop-entity = "&7King of &c%arg 2 parsed as offline player%":
 												kill loop-entity
 										delete {HyperCosmetics::%arg 2 parsed as offline player's uuid%::Pets::*}
 										delete {_HyperCosmetics::%arg 2 parsed as offline player's uuid%::PetsLocation}
 										send "&7You have cleared all pets &7for the player &6%arg 2 parsed as offline player%&7." to player
-										stop
-				if arg 1 = "list":
+				arg 1 = "list":
 					HyperCosmeticsCMDList(player, "Pets")
-		if sender = console:
+		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
 
 on command "/hpets" or "/hypercosmetics:hpets":
-	if sender = player:
-		if player doesn't have permission "hypercosmetics.hpets" or "hypercosmetics.*":
+	sender = player:
+		player doesn't have permission "hypercosmetics.hpets" or "hypercosmetics.*":
 			cancel event
 			HyperCosmeticsNoPermission(player)
