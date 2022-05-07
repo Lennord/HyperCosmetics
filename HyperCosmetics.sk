@@ -962,7 +962,7 @@ on join:
 	load "plugins/HyperCosmetics/config.yml"
 	yaml value "language" from "config" = "English":
 		yaml value "cosmetics.pets.king.stats" from "config" = true:
-			{HyperCosmetics::%player's uuid%::Pets::king} is set:
+			{HyperCosmetics::%player's uuid%::Pets::*} is set:
 				loop all entities:
 					name of loop-entity = "&7King of &c%player%":
 						kill loop-entity
