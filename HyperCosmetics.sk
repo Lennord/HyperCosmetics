@@ -33,9 +33,11 @@ on load:
 		set yaml value "cosmetics.joinquit-message.messages-2.stats" from "config" to true
 		set yaml value "cosmetics.joinquit-message.messages-3.stats" from "config" to true
 		set yaml value "cosmetics.pets.king.stats" from "config" to true
+		set yaml value "cosmetics.pets.king.effects" from "config" to true
 		set yaml value "cosmetics.pets.panda.stats" from "config" to true
 		set yaml value "cosmetics.pets.brown-panda.stats" from "config" to true
 		set yaml value "cosmetics.pets.slime.stats" from "config" to true
+		set yaml value "cosmetics.pets.slime.effects" from "config" to true
 		save yaml "config"
 		unload yaml "config"
 		stop
@@ -263,7 +265,7 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
 				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7King of &c%{_s}%"
-				set last spawned armor stand's helmet to player head with nbt "{display:{Name:""{\""text\"":\""&fKing\""}""},SkullOwner:{Id:[I;670882166,1095451468,-1623077635,-899593644],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjRmZWY2NWE5YzkzYzBlYTgzYWNlMGJiYzZiNWQxMjY1NTE1NzUzN2ViNjJhZmE4N2EzMWI5NjI3M2QwNjkzZiJ9fX0=""}]}}}"
+				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;670882166,1095451468,-1623077635,-899593644],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjRmZWY2NWE5YzkzYzBlYTgzYWNlMGJiYzZiNWQxMjY1NTE1NzUzN2ViNjJhZmE4N2EzMWI5NjI3M2QwNjkzZiJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to iron chestplate
 				set last spawned armor stand's leggings to iron leggings
 				set last spawned armor stand's boots to iron boots
@@ -296,7 +298,7 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
 				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Panda of &c%{_s}%"
-				set last spawned armor stand's helmet to player head with nbt "{display:{Name:""{\""text\"":\""&fKing\""}""},SkullOwner:{Id:[I;1648193673,1096304930,-1387458717,923627530],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmE2ZTNhZDgyM2Y5NmQ0YTgwYTE0NTU2ZDhjOWM3NjMyMTYzYmJkMmE4NzZjMDExOGI0NTg5MjVkODdhNTUxMyJ9fX0=""}]}}}"
+				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;1648193673,1096304930,-1387458717,923627530],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmE2ZTNhZDgyM2Y5NmQ0YTgwYTE0NTU2ZDhjOWM3NjMyMTYzYmJkMmE4NzZjMDExOGI0NTg5MjVkODdhNTUxMyJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate with nbt "{display:{color:16383987}}"
 				set last spawned armor stand's leggings to leather leggings with nbt "{display:{color:16383987}}"
 				set last spawned armor stand's boots to leather boots with nbt "{display:{color:16383987}}"
@@ -329,7 +331,7 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
 				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Brown Panda of &c%{_s}%"
-				set last spawned armor stand's helmet to player head with nbt "{display:{Name:""{\""text\"":\""&fKing\""}""},SkullOwner:{Id:[I;-2102769737,-837531619,-1211653664,1137661308],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjRmN2M3M2ZkYTZhMzRjZjhiZTRjNzkwN2RkMGY1ZjA4NjVkZDc3ZmQ4ODJmYzYzMzU2MzY0OWM1NzUxN2NhZSJ9fX0=""}]}}}"
+				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;-2102769737,-837531619,-1211653664,1137661308],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjRmN2M3M2ZkYTZhMzRjZjhiZTRjNzkwN2RkMGY1ZjA4NjVkZDc3ZmQ4ODJmYzYzMzU2MzY0OWM1NzUxN2NhZSJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate
 				set last spawned armor stand's leggings to leather leggings with nbt "{display:{color:16383987}}"
 				set last spawned armor stand's boots to leather boots
@@ -362,7 +364,7 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
 				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Brown Panda of &c%{_s}%"
-				set last spawned armor stand's helmet to player head with nbt "{display:{Name:""{\""text\"":\""Slime\""}""},SkullOwner:{Id:[I;610437715,1064192033,-2009386261,-1492153709],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjFhZmZkMzFlZmMzN2JhODRmNTAxODczOTRkODY4ODM0NGNjZDA2Y2RjOTI2ZGRmY2YyZGYxMTY5ODZkY2E5In19fQ==""}]}}}"
+				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;610437715,1064192033,-2009386261,-1492153709],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjFhZmZkMzFlZmMzN2JhODRmNTAxODczOTRkODY4ODM0NGNjZDA2Y2RjOTI2ZGRmY2YyZGYxMTY5ODZkY2E5In19fQ==""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate with nbt "{display:{color:8439583}}"
 				set last spawned armor stand's leggings to leather leggings with nbt "{display:{color:8439583}}"
 				set last spawned armor stand's boots to leather boots with nbt "{display:{color:8439583}}"
@@ -419,6 +421,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				slot yaml value "item-gadgets.slot" from "config" of player's inventory = bow named "&c&l↪ &7Bow Teleport (&eRight-Click&7)":
 					close player's inventory
@@ -440,6 +443,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				slot yaml value "item-gadgets.slot" from "config" of player's inventory = snowball named "&c&l↪ &7Snowball (&eRight-Click&7)":
 					close player's inventory
@@ -461,6 +465,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				slot yaml value "item-gadgets.slot" from "config" of player's inventory = blaze rod named "&c&l↪ &7Lightning (&eRight-Click&7)":
 					close player's inventory
@@ -482,6 +487,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				slot yaml value "item-gadgets.slot" from "config" of player's inventory = feather named "&c&l↪ &7Rocket (&eRight-Click&7)":
 					close player's inventory
@@ -503,6 +509,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				player's helmet = leather helmet named "&fLeather Armor":
 					close player's inventory
@@ -524,6 +531,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				player's helmet = chainmail helmet named "&fChainmail Armor":
 					close player's inventory
@@ -545,6 +553,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				player's helmet = iron helmet named "&fIron Armor":
 					close player's inventory
@@ -566,6 +575,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				player's helmet = golden helmet named "&fGolden Armor":
 					close player's inventory
@@ -587,6 +597,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				player's helmet = diamond helmet named "&fDiamond Armor":
 					close player's inventory
@@ -608,6 +619,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				player's helmet = netherite helmet named "&fNetherite Armor":
 					close player's inventory
@@ -629,6 +641,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 				{HyperCosmetics::%player's uuid%::JoinQuitMessages::*} or {HyperCosmetics::%player's uuid%::Pets::*} is set:
 					close player's inventory
@@ -650,6 +663,7 @@ on inventory click:
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {HyperCosmetics::%player's uuid%::JoinQuitMessages::*}
+					clear player's active potion effects
 					send action bar "&cYou have cleared all cosmetics." to player
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuGadgetsMain" of player):
 		cancel event
@@ -935,10 +949,13 @@ on inventory click:
 			name of event-slot = "&cClear all pets":
 				{HyperCosmetics::%player's uuid%::Pets::*} is set:
 					close player's inventory
+					clear player's active potion effects
 					loop all entities:
 						name of loop-entity = "&7King of &c%player%":
 							kill loop-entity
 						name of loop-entity = "&7Panda of &c%player%":
+							kill loop-entity
+						name of loop-entity = "&7Brown Panda of &c%player%":
 							kill loop-entity
 						name of loop-entity = "&7Brown Panda of &c%player%":
 							kill loop-entity
@@ -951,12 +968,15 @@ on inventory click:
 				else:
 					yaml value "cosmetics.pets.king.stats" from "config" = true:
 						close player's inventory
+						clear player's active potion effects
 						delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 						delete {HyperCosmetics::%player's uuid%::Pets::*} 
 						wait 1 tick
 						set {HyperCosmetics::%player's uuid%::Pets::king} to true
 						send action bar "&7You have enabled this pets&7." to player
 						HyperCosmeticsPetsGive(player, "&7King of &c%player%", player's location)
+						yaml value "cosmetics.pets.king.effects" from "config" = true:
+							apply potion of strength to player for 100 years
 					else:
 						send "&4| &8x &cThis pets has been disabled by the server." to player
 			name of event-slot = "&fPanda":
@@ -965,6 +985,7 @@ on inventory click:
 				else:
 					yaml value "cosmetics.pets.panda.stats" from "config" = true:
 						close player's inventory
+						clear player's active potion effects
 						delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 						delete {HyperCosmetics::%player's uuid%::Pets::*} 
 						wait 1 tick
@@ -979,6 +1000,7 @@ on inventory click:
 				else:
 					yaml value "cosmetics.pets.brown-panda.stats" from "config" = true:
 						close player's inventory
+						clear player's active potion effects
 						delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 						delete {HyperCosmetics::%player's uuid%::Pets::*} 
 						wait 1 tick
@@ -993,12 +1015,15 @@ on inventory click:
 				else:
 					yaml value "cosmetics.pets.slime.stats" from "config" = true:
 						close player's inventory
+						clear player's active potion effects
 						delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 						delete {HyperCosmetics::%player's uuid%::Pets::*} 
 						wait 1 tick
 						set {HyperCosmetics::%player's uuid%::Pets::slime} to true
 						send action bar "&7You have enabled this pets&7." to player
 						HyperCosmeticsPetsGive(player, "&7Slime of &c%player%", player's location)
+						yaml value "cosmetics.pets.slime.effects" from "config" = true:
+							apply potion of jump 2 to player for 100 years
 					else:
 						send "&4| &8x &cThis pets has been disabled by the server." to player
 
@@ -1045,6 +1070,7 @@ on join:
 	yaml value "language" from "config" = "English":
 		yaml value "cosmetics.pets.king.stats" from "config" = true:
 			{HyperCosmetics::%player's uuid%::Pets::*} is set:
+				clear player's active potion effects
 				loop all entities:
 					name of loop-entity = "&7King of &c%player%":
 						kill loop-entity
@@ -1955,12 +1981,15 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 											load "plugins/HyperCosmetics/config.yml"
 											yaml value "language" from "config" = "English":
 												yaml value "cosmetics.pets.king.stats" from "config" = true:
+													clear player's active potion effects
 													delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 													delete {HyperCosmetics::%player's uuid%::Pets::*} 
 													wait 1 tick
 													set {HyperCosmetics::%player's uuid%::Pets::king} to true
 													send action bar "&7You have enabled this pets&7." to player
 													HyperCosmeticsPetsGive(player, "&7King of &c%player%", player's location)
+													yaml value "cosmetics.pets.king.effects" from "config" = true:
+														apply potion of strength to player for 100 years
 												else:
 													send "&4| &8x &cThis pets has been disabled by the server." to player
 									arg 2 = "panda":
@@ -1970,6 +1999,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 											load "plugins/HyperCosmetics/config.yml"
 											yaml value "language" from "config" = "English":
 												yaml value "cosmetics.pets.bpanda.stats" from "config" = true:
+													clear player's active potion effects
 													delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 													delete {HyperCosmetics::%player's uuid%::Pets::*} 
 													wait 1 tick
@@ -1985,6 +2015,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 											load "plugins/HyperCosmetics/config.yml"
 											yaml value "language" from "config" = "English":
 												yaml value "cosmetics.pets.brown-panda.stats" from "config" = true:
+													clear player's active potion effects
 													delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 													delete {HyperCosmetics::%player's uuid%::Pets::*} 
 													wait 1 tick
@@ -2000,12 +2031,15 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 											load "plugins/HyperCosmetics/config.yml"
 											yaml value "language" from "config" = "English":
 												yaml value "cosmetics.pets.brown-panda.stats" from "config" = true:
+													clear player's active potion effects
 													delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 													delete {HyperCosmetics::%player's uuid%::Pets::*} 
 													wait 1 tick
 													set {HyperCosmetics::%player's uuid%::Pets::slime} to true
 													send action bar "&7You have enabled this pets&7." to player
 													HyperCosmeticsPetsGive(player, "&7Slime of &c%player%", player's location)
+													yaml value "cosmetics.pets.slime.effects" from "config" = true:
+														apply potion of jump 2 to player for 100 years
 												else:
 													send "&4| &8x &cThis pets has been disabled by the server." to player
 								else:
@@ -2019,48 +2053,56 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
 													yaml value "cosmetics.pets.king.stats" from "config" = true:
+														clear arg 2 parsed as offline player's active potion effects
 														delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 														delete {HyperCosmetics::%player's uuid%::Pets::*} 
 														wait 1 tick
 														set {HyperCosmetics::%player's uuid%::Pets::king} to true
 														send "&7You have enabled the pet &6King &7for the player &6%arg 3%&7." to player
-														HyperCosmeticsPetsGive(player, "&7King of &c%arg 3%", player's location)
+														HyperCosmeticsPetsGive(player, "&7King of &c%arg 3%", arg 3's location)
+														yaml value "cosmetics.pets.king.effects" from "config" = true:
+															apply potion of strength to arg 3 for 100 years
 													else:
 														send "&4| &8x &cThis pets has been disabled by the server." to player
 											arg 2 = "panda":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
 													yaml value "cosmetics.pets.bpanda.stats" from "config" = true:
+														clear arg 2 parsed as offline player's active potion effects
 														delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 														delete {HyperCosmetics::%player's uuid%::Pets::*} 
 														wait 1 tick
 														set {HyperCosmetics::%player's uuid%::Pets::panda} to true
 														send "&7You have enabled the pet &6Panda &7for the player &6%arg 3%&7." to player
-														HyperCosmeticsPetsGive(player, "&7Panda of &c%arg 3%", player's location)
+														HyperCosmeticsPetsGive(player, "&7Panda of &c%arg 3%", arg 3's location)
 													else:
 														send "&4| &8x &cThis pets has been disabled by the server." to player
 											arg 2 = "brown-panda":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
 													yaml value "cosmetics.pets.brown-panda.stats" from "config" = true:
+														clear arg 2 parsed as offline player's active potion effects
 														delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 														delete {HyperCosmetics::%player's uuid%::Pets::*} 
 														wait 1 tick
 														set {HyperCosmetics::%player's uuid%::Pets::brownpanda} to true
 														send "&7You have enabled the pet &6Brown Panda &7for the player &6%arg 3%&7." to player
-														HyperCosmeticsPetsGive(player, "&7Brown Panda of &c%arg 3%", player's location)
+														HyperCosmeticsPetsGive(player, "&7Brown Panda of &c%arg 3%", arg 3's location)
 													else:
 														send "&4| &8x &cThis pets has been disabled by the server." to player
 											arg 2 = "slime":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
 													yaml value "cosmetics.pets.brown-panda.stats" from "config" = true:
+														clear arg 2 parsed as offline player's active potion effects
 														delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 														delete {HyperCosmetics::%player's uuid%::Pets::*} 
 														wait 1 tick
 														set {HyperCosmetics::%player's uuid%::Pets::slime} to true
 														send "&7You have enabled the pet &6Slime &7for the player &6%arg 3%&7." to player
-														HyperCosmeticsPetsGive(player, "&7Slime of &c%arg 3%", player's location)
+														HyperCosmeticsPetsGive(player, "&7Slime of &c%arg 3%", arg 3's location)
+														yaml value "cosmetics.pets.slime.effects" from "config" = true:
+															apply potion of jump 2 to arg 3 for 100 years
 													else:
 														send "&4| &8x &cThis pets has been disabled by the server." to player
 				arg 1 = "clear":
@@ -2070,6 +2112,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 						arg 2 isn't set:
 							load "plugins/HyperCosmetics/config.yml"
 							yaml value "language" from "config" = "English":
+								clear player's active potion effects
 								loop all entities:
 									name of loop-entity = "&7King of &c%player%":
 										kill loop-entity
@@ -2091,6 +2134,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 								else:
 									load "plugins/HyperCosmetics/config.yml"
 									yaml value "language" from "config" = "English":
+										clear arg 2 parsed as offline player's active potion effects
 										loop all entities:
 											name of loop-entity = "&7King of &c%arg 2 parsed as offline player%":
 												kill loop-entity
