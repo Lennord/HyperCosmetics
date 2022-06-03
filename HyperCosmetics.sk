@@ -1030,7 +1030,9 @@ on inventory click:
 							kill loop-entity
 						name of loop-entity = "&7Brown Panda of &c%player%":
 							kill loop-entity
-						name of loop-entity = "&7Brown Panda of &c%player%":
+						name of loop-entity = "&7Slime of &c%player%":
+							kill loop-entity
+						name of loop-entity = "&7Slime Blue of &c%player%":
 							kill loop-entity
 					delete {HyperCosmetics::%player's uuid%::Pets::*}
 					delete {_HyperCosmetics::%player's uuid%::PetsLocation}
