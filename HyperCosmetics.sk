@@ -199,7 +199,8 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 			send "" to {_s}
 			send "&8| &f/hypercosmetics &binfo &8x &7Seen informations of this skript." to {_s}
 			send "&8| &f/hypercosmetics &breload &8x &7Reload this skript." to {_s}
-			send "&8| &f/hypercosmetics &bmenu &8x &7Open menu." to {_s}
+			{_s} = player:
+				send "&8| &f/hypercosmetics &bmenu &8x &7Open menu." to {_s}
 			send "" to {_s}
 		{_typehelp} = "HGadgetsCMD":
 			send "" to {_s}
