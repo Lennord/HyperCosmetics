@@ -269,9 +269,8 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 						kill loop-entity
 					name of loop-entity = "&7Slime Blue of &c%{_s}%":
 						kill loop-entity
-				spawn armor stand at location of {_s}
+				spawn armor stand at location of {_s} with nbt "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}"
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
-				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7King of &c%{_s}%"
 				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;670882166,1095451468,-1623077635,-899593644],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjRmZWY2NWE5YzkzYzBlYTgzYWNlMGJiYzZiNWQxMjY1NTE1NzUzN2ViNjJhZmE4N2EzMWI5NjI3M2QwNjkzZiJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to iron chestplate
@@ -304,9 +303,8 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 						kill loop-entity
 					name of loop-entity = "&7Slime Blue of &c%{_s}%":
 						kill loop-entity
-				spawn armor stand at location of {_s}
+				spawn armor stand at location of {_s} with nbt "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}"
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
-				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Panda of &c%{_s}%"
 				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;1648193673,1096304930,-1387458717,923627530],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmE2ZTNhZDgyM2Y5NmQ0YTgwYTE0NTU2ZDhjOWM3NjMyMTYzYmJkMmE4NzZjMDExOGI0NTg5MjVkODdhNTUxMyJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate with nbt "{display:{color:16383987}}"
@@ -339,9 +337,8 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 						kill loop-entity
 					name of loop-entity = "&7Slime Blue of &c%{_s}%":
 						kill loop-entity
-				spawn armor stand at location of {_s}
+				spawn armor stand at location of {_s} with nbt "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}"
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
-				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Brown Panda of &c%{_s}%"
 				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;-2102769737,-837531619,-1211653664,1137661308],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjRmN2M3M2ZkYTZhMzRjZjhiZTRjNzkwN2RkMGY1ZjA4NjVkZDc3ZmQ4ODJmYzYzMzU2MzY0OWM1NzUxN2NhZSJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate
@@ -374,9 +371,8 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 						kill loop-entity
 					name of loop-entity = "&7Slime Blue of &c%{_s}%":
 						kill loop-entity
-				spawn armor stand at location of {_s}
+				spawn armor stand at location of {_s} with nbt "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}"
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
-				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Slime of &c%{_s}%"
 				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;610437715,1064192033,-2009386261,-1492153709],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjFhZmZkMzFlZmMzN2JhODRmNTAxODczOTRkODY4ODM0NGNjZDA2Y2RjOTI2ZGRmY2YyZGYxMTY5ODZkY2E5In19fQ==""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate with nbt "{display:{color:8439583}}"
@@ -409,9 +405,8 @@ function HyperCosmeticsPetsGive(s: sender, n: text, playerloc: location):
 						kill loop-entity
 					name of loop-entity = "&7Slime Blue of &c%{_s}%":
 						kill loop-entity
-				spawn armor stand at location of {_s}
+				spawn armor stand at location of {_s} with nbt "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}"
 				set {_HyperCosmetics::%{_s}'s uuid%::PetsModify} to last spawned armor stand
-				add "{Small:1b,NoGravity:1b,NoBasePlate:1b,ShowArms:1b,Invulnerable:1}" to nbt of last spawned armor stand
 				set name of last spawned armor stand to "&7Slime Blue of &c%{_s}%"
 				set last spawned armor stand's helmet to player head with nbt "{SkullOwner:{Id:[I;-343104141,-868070461,-1801103580,1522677171],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzFjN2I0NWQwZTA3YTI0Y2RjMDlmMWI5MzA0MmFlNGJjODJmNjEwNTJiOWYwOGE3MWI5NmZkN2NiYzQyZDU4MiJ9fX0=""}]}}}"
 				set last spawned armor stand's chestplate to leather chestplate with nbt "{display:{color:1481884}}"
