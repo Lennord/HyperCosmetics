@@ -1484,7 +1484,7 @@ command /hypercosmetics [<text>] [<text>]:
 					send "&8| &fName of skript: &cHyperCosmetics (Skript)" to sender
 					send "&8| &fAuthor of skript: &calexisl315 (Alias: Lennord)" to sender
 					send "&8| &fDescription of skript: &cThis skript allows you to implement many types of cosmetics." to sender
-					send "&8| &fVersion of skript: &c0.0.6" to sender
+					send "&8| &fVersion of skript: &c0.0.7" to sender
 					send "&8| &fPlugin requirements: &cSkript&7, &cSkBee &7and &cSkript-YAML" to sender
 					send "&8| &fAll languages of skript: &cEnglish" to sender
 					send "" to sender
