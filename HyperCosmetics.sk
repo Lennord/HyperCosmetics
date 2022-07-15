@@ -1,8 +1,3 @@
-#   . HyperCosmetics (Skript), Developped by alexisl315 (Alias: Lennord).
-#   . This skript allows you to implement many types of cosmetics.
-
-#   --> Code:
-
 on load:
 	yaml file "plugins/HyperCosmetics/config.yml" doesn't exist:
 		load "plugins/HyperCosmetics/config.yml"
@@ -49,28 +44,26 @@ on load:
 			set yaml value "language" from "config" to "English"
 		save yaml "config"
 		unload yaml "config"
-		stop
-
-on load:
-	send "&7[&bHyperCosmetics&7] &8x &2Enabled" to console
+	send "&7[&bHyperCosmetics&7] &8» &2Enabled" to console
+	stop
 
 on unload:
-	send "&7[&bHyperCosmetics&7] &8x &cDisabled" to console
+	send "&7[&bHyperCosmetics&7] &8» &cDisabled" to console
 
 function HyperCosmeticsNoPermission(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
 	yaml value "language" from "config" = "English":
-		send "&4| &8x &cYou have not permission to use this command." to {_s}
+		send "&4» &cYou have not permission to use this command." to {_s}
 
 function HyperCosmeticsNoCommandConsole(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
 	yaml value "language" from "config" = "English":
-		send "&4| &8x &cYou must be a player to use this command." to {_s}
+		send "&4» &cYou must be a player to use this command." to {_s}
 
 function HyperCosmeticsCMDOfflinePlayer(s: sender):
 	load "plugins/HyperCosmetics/config.yml"
 	yaml value "language" from "config" = "English":
-		send "&4| &8x &cThe player is offline." to {_s}
+		send "&4» &cThe player is offline." to {_s}
 
 function HyperCosmeticsOpenMenu(s: sender, typemenu: text):
 	load "plugins/HyperCosmetics/config.yml"
@@ -195,48 +188,48 @@ function HyperCosmeticsHelp(s: sender, typehelp: text):
 	yaml value "language" from "config" = "English":
 		{_typehelp} = "HyperCosmeticsCMD":
 			send "" to {_s}
-			send "&8| &8x &6Help:" to {_s}
+			send "&6Help:" to {_s}
 			send "" to {_s}
-			send "&8| &f/hypercosmetics &binfo &8x &7Seen informations of this skript." to {_s}
-			send "&8| &f/hypercosmetics &breload &8x &7Reload this skript." to {_s}
+			send "&6» &f/hypercosmetics &binfo &8» &7Seen informations of this skript." to {_s}
+			send "&6» &f/hypercosmetics &breload &8» &7Reload this skript." to {_s}
 			{_s} = player:
-				send "&8| &f/hypercosmetics &bmenu &8x &7Open menu." to {_s}
+				send "&6» &f/hypercosmetics &bmenu &8» &7Open menu." to {_s}
 			send "" to {_s}
 		{_typehelp} = "HGadgetsCMD":
 			send "" to {_s}
-			send "&8| &8x &6Help:" to {_s}
+			send "&6Help:" to {_s}
 			send "" to {_s}
-			send "&8| &f/hgadget &bmenu &8x &7Open menu gadgets." to {_s}
-			send "&8| &f/hgadget &bgive &7[&cname of gadgets&7] &7[&7OPTION: &cname of player&7] &8x &7Give gadgets types." to {_s}
-			send "&8| &f/hgadget &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all gadgets." to {_s}
-			send "&8| &f/hgadget &blist &8x &7List of all gadgets." to {_s}
+			send "&6» &f/hgadget &bmenu &8» &7Open menu gadgets." to {_s}
+			send "&6» &f/hgadget &bgive &7[&cname of gadgets&7] &7[&7OPTION: &cname of player&7] &8» &7Give gadgets types." to {_s}
+			send "&6» &f/hgadget &bclear &7[&7OPTION: &cname of player&7] &8» &7Clear all gadgets." to {_s}
+			send "&6» &f/hgadget &blist &8» &7List of all gadgets." to {_s}
 			send "" to {_s}
 		{_typehelp} = "HSuitsCMD":
 			send "" to {_s}
-			send "&8| &8x &6Help:" to {_s}
+			send "&6Help:" to {_s}
 			send "" to {_s}
-			send "&8| &f/hsuits &bmenu &8x &7Open menu suits." to {_s}
-			send "&8| &f/hsuits &bgive &7[&cname of suits&7] &7[&7OPTION: &cname of player&7] &8x &7Give suits types." to {_s}
-			send "&8| &f/hsuits &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all suits." to {_s}
-			send "&8| &f/hsuits &blist &8x &7List of all suits." to {_s}
+			send "&6» &f/hsuits &bmenu &8» &7Open menu suits." to {_s}
+			send "&6» &f/hsuits &bgive &7[&cname of suits&7] &7[&7OPTION: &cname of player&7] &8» &7Give suits types." to {_s}
+			send "&6» &f/hsuits &bclear &7[&7OPTION: &cname of player&7] &8» &7Clear all suits." to {_s}
+			send "&6» &f/hsuits &blist &8» &7List of all suits." to {_s}
 			send "" to {_s}
 		{_typehelp} = "HJoinQuitMessagesCMD":
 			send "" to {_s}
-			send "&8| &8x &6Help:" to {_s}
+			send "&6Help:" to {_s}
 			send "" to {_s}
-			send "&8| &f/hjoinquitmessages &bmenu &8x &7Open menu messages." to {_s}
-			send "&8| &f/hjoinquitmessages &bgive &7[&cname of messages&7] &7[&7OPTION: &cname of player&7] &8x &7Enable message type." to {_s}
-			send "&8| &f/hjoinquitmessages &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all messages." to {_s}
-			send "&8| &f/hjoinquitmessages &blist &8x &7List of all messages." to {_s}
+			send "&6» &f/hjoinquitmessages &bmenu &8» &7Open menu messages." to {_s}
+			send "&6» &f/hjoinquitmessages &bgive &7[&cname of messages&7] &7[&7OPTION: &cname of player&7] &8» &7Enable message type." to {_s}
+			send "&6» &f/hjoinquitmessages &bclear &7[&7OPTION: &cname of player&7] &8» &7Clear all messages." to {_s}
+			send "&6» &f/hjoinquitmessages &blist &8» &7List of all messages." to {_s}
 			send "" to {_s}
 		{_typehelp} = "HPetsCMD":
 			send "" to {_s}
-			send "&8| &8x &6Help:" to {_s}
+			send "&6Help:" to {_s}
 			send "" to {_s}
-			send "&8| &f/hpets &bmenu &8x &7Open menu pets." to {_s}
-			send "&8| &f/hpets &bgive &7[&cname of pets&7] &7[&7OPTION: &cname of player&7] &8x &7Enable pets type." to {_s}
-			send "&8| &f/hpets &bclear &7[&7OPTION: &cname of player&7] &8x &7Clear all pets." to {_s}
-			send "&8| &f/hpets &blist &8x &7List of all pets." to {_s}
+			send "&6» &f/hpets &bmenu &8» &7Open menu pets." to {_s}
+			send "&6» &f/hpets &bgive &7[&cname of pets&7] &7[&7OPTION: &cname of player&7] &8» &7Enable pets type." to {_s}
+			send "&6» &f/hpets &bclear &7[&7OPTION: &cname of player&7] &8» &7Clear all pets." to {_s}
+			send "&6» &f/hpets &blist &8» &7List of all pets." to {_s}
 			send "" to {_s}
 
 function HyperCosmeticsCMDList(s: sender, typecosmetics: text):
@@ -780,7 +773,7 @@ on inventory click:
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Firework&7." to player
 					else:
-						send "&4| &8x &cThis gadget has been disabled by the server." to player
+						send "&4» &cThis gadget has been disabled by the server." to player
 			name of event-slot = "&fBow Teleport":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
@@ -792,7 +785,7 @@ on inventory click:
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
 						send action bar "&7You have gived the gadget &6Bed-Teleport&7." to player
 					else:
-						send "&4| &8x &cThis gadget has been disabled by the server." to player
+						send "&4» &cThis gadget has been disabled by the server." to player
 			name of event-slot = "&fSnowball":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
@@ -804,7 +797,7 @@ on inventory click:
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Snowball&7." to player
 					else:
-						send "&4| &8x &cThis gadget has been disabled by the server." to player
+						send "&4» &cThis gadget has been disabled by the server." to player
 			name of event-slot = "&fLightning":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
@@ -816,7 +809,7 @@ on inventory click:
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Lightning&7." to player
 					else:
-						send "&4| &8x &cThis gadget has been disabled by the server." to player
+						send "&4» &cThis gadget has been disabled by the server." to player
 			name of event-slot = "&fRocket":
 				close player's inventory
 				load "plugins/HyperCosmetics/config.yml"
@@ -828,7 +821,7 @@ on inventory click:
 						set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 						send action bar "&7You have gived the gadget &6Rocket&7." to player
 					else:
-						send "&4| &8x &cThis gadget has been disabled by the server." to player
+						send "&4» &cThis gadget has been disabled by the server." to player
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuSuitsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
@@ -892,7 +885,7 @@ on inventory click:
 						set player's boots to leather boots named "&fLeather Armor"
 						send action bar "&7You have gived the suit &6Leather Armor&7." to player
 					else:
-						send "&4| &8x &cThis suit has been disabled by the server." to player
+						send "&4» &cThis suit has been disabled by the server." to player
 			name of event-slot = "&fChainmail Armor":
 				player doesn't have permission "hypercosmetics.openmenu.suits.give.chainmailarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -905,7 +898,7 @@ on inventory click:
 						set player's boots to chainmail boots named "&fChainmail Armor"
 						send action bar "&7You have gived the suit &6Chainmail Armor&7." to player
 					else:
-						send "&4| &8x &cThis suit has been disabled by the server." to player
+						send "&4» &cThis suit has been disabled by the server." to player
 			name of event-slot = "&fIron Armor":
 				player doesn't have permission "hypercosmetics.openmenu.suits.give.ironarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -918,7 +911,7 @@ on inventory click:
 						set player's boots to iron boots named "&fIron Armor"
 						send action bar "&7You have gived the suit &6Iron Armor&7." to player
 					else:
-						send "&4| &8x &cThis suit has been disabled by the server." to player
+						send "&4» &cThis suit has been disabled by the server." to player
 			name of event-slot = "&fGolden Armor":
 				player doesn't have permission "hypercosmetics.openmenu.suits.give.goldenarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -931,7 +924,7 @@ on inventory click:
 						set player's boots to golden boots named "&fGolden Armor"
 						send action bar "&7You have gived the suit &6Golden Armor&7." to player
 					else:
-						send "&4| &8x &cThis suit has been disabled by the server." to player
+						send "&4» &cThis suit has been disabled by the server." to player
 			name of event-slot = "&fDiamond Armor":
 				player doesn't have permission "hypercosmetics.openmenu.suits.give.diamondarmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -944,7 +937,7 @@ on inventory click:
 						set player's boots to diamond boots named "&fDiamond Armor"
 						send action bar "&7You have gived the suit &6Diamond Armor&7." to player
 					else:
-						send "&4| &8x &cThis suit has been disabled by the server." to player
+						send "&4» &cThis suit has been disabled by the server." to player
 			name of event-slot = "&fNetherite Armor":
 				player doesn't have permission "hypercosmetics.openmenu.suits.give.netheritearmor" or "hypercosmetics.openmenu.suits.give.*" or "hypercosmetics.openmenu.suits.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -957,7 +950,7 @@ on inventory click:
 						set player's boots to netherite boots named "&fNetherite Armor"
 						send action bar "&7You have gived the suit &6Netherite Armor&7." to player
 					else:
-						send "&4| &8x &cThis suit has been disabled by the server." to player
+						send "&4» &cThis suit has been disabled by the server." to player
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuJoinQuitMessagesMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
@@ -982,7 +975,7 @@ on inventory click:
 						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
 						send action bar "&7You have enabled this messages." to player
 					else:
-						send "&4| &8x &cThis messages has been disabled by the server." to player
+						send "&4» &cThis messages has been disabled by the server." to player
 			name of event-slot = "&fMessage &b##02":
 				player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.2" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -994,7 +987,7 @@ on inventory click:
 						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} to true
 						send action bar "&7You have enabled this messages." to player
 					else:
-						send "&4| &8x &cThis messages has been disabled by the server." to player
+						send "&4» &cThis messages has been disabled by the server." to player
 			name of event-slot = "&fMessage &b##03":
 				player doesn't have permission "hypercosmetics.openmenu.joinquitmessages.give.message.3" or "hypercosmetics.openmenu.joinquitmessages.give.message.*" or "hypercosmetics.openmenu.joinquitmessages.give.*" or "hypercosmetics.openmenu.joinquitmessages.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -1006,7 +999,7 @@ on inventory click:
 						set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} to true
 						send action bar "&7You have enabled this messages." to player
 					else:
-						send "&4| &8x &cThis messages has been disabled by the server." to player
+						send "&4» &cThis messages has been disabled by the server." to player
 	event-inventory = (metadata tag "HyperCosmeticsOpenMenuPetsMain" of player):
 		cancel event
 		load "plugins/HyperCosmetics/config.yml"
@@ -1049,7 +1042,7 @@ on inventory click:
 						yaml value "cosmetics.pets.king.effects" from "config" = true:
 							apply potion of strength to player for 100 years
 					else:
-						send "&4| &8x &cThis pets has been disabled by the server." to player
+						send "&4» &cThis pets has been disabled by the server." to player
 			name of event-slot = "&fPanda":
 				player doesn't have permission "hypercosmetics.openmenu.pets.give.panda" or "hypercosmetics.openmenu.pets.give.*" or "hypercosmetics.openmenu.pets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -1064,7 +1057,7 @@ on inventory click:
 						send action bar "&7You have enabled this pets&7." to player
 						HyperCosmeticsPetsGive(player, "&7Panda of &c%player%", player's location)
 					else:
-						send "&4| &8x &cThis pets has been disabled by the server." to player
+						send "&4» &cThis pets has been disabled by the server." to player
 			name of event-slot = "&fBrown Panda":
 				player doesn't have permission "hypercosmetics.openmenu.pets.give.brownpanda" or "hypercosmetics.openmenu.pets.give.*" or "hypercosmetics.openmenu.pets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -1079,7 +1072,7 @@ on inventory click:
 						send action bar "&7You have enabled this pets&7." to player
 						HyperCosmeticsPetsGive(player, "&7Brown Panda of &c%player%", player's location)
 					else:
-						send "&4| &8x &cThis pets has been disabled by the server." to player
+						send "&4» &cThis pets has been disabled by the server." to player
 			name of event-slot = "&fSlime":
 				player doesn't have permission "hypercosmetics.openmenu.pets.give.slime" or "hypercosmetics.openmenu.pets.give.*" or "hypercosmetics.openmenu.pets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -1096,7 +1089,7 @@ on inventory click:
 						yaml value "cosmetics.pets.slime.effects" from "config" = true:
 							apply potion of jump 2 to player for 100 years
 					else:
-						send "&4| &8x &cThis pets has been disabled by the server." to player
+						send "&4» &cThis pets has been disabled by the server." to player
 			name of event-slot = "&fSlime Blue":
 				player doesn't have permission "hypercosmetics.openmenu.pets.give.slimeblue" or "hypercosmetics.openmenu.pets.give.*" or "hypercosmetics.openmenu.pets.*" or "hypercosmetics.openmenu.*" or "hypercosmetics.*":
 					HyperCosmeticsNoPermission(player)
@@ -1113,7 +1106,7 @@ on inventory click:
 						yaml value "cosmetics.pets.slime.effects" from "config" = true:
 							apply potion of jump 2 to player for 100 years
 					else:
-						send "&4| &8x &cThis pets has been disabled by the server." to player
+						send "&4» &cThis pets has been disabled by the server." to player
 
 on join:
 	load "plugins/HyperCosmetics/config.yml"
@@ -1479,14 +1472,14 @@ command /hypercosmetics [<text>] [<text>]:
 				load "plugins/HyperCosmetics/config.yml"
 				yaml value "language" from "config" = "English":
 					send "" to sender
-					send "&8| &8x &6Help:" to sender
+					send "&6Help:" to sender
 					send "" to sender
-					send "&8| &fName of skript: &cHyperCosmetics (Skript)" to sender
-					send "&8| &fAuthor of skript: &calexisl315 (Alias: Lennord)" to sender
-					send "&8| &fDescription of skript: &cThis skript allows you to implement many types of cosmetics." to sender
-					send "&8| &fVersion of skript: &c0.0.7" to sender
-					send "&8| &fPlugin requirements: &cSkript&7, &cSkBee &7and &cSkript-YAML" to sender
-					send "&8| &fAll languages of skript: &cEnglish" to sender
+					send "&6» &fName of skript: &cHyperCosmetics (Skript)" to sender
+					send "&6» &fLink of skript: &chttps://www.spigotmc.org/resources/hypercosmetics-skript-1-17-1-1-18-2.101432/" to sender
+					send "&6» &fDescription of skript: &cThis skript allows you to implement many types of cosmetics." to sender
+					send "&6» &fVersion of skript: &c0.0.7" to sender
+					send "&6» &fPlugin requirements: &cSkript&7, &cSkBee &7and &cSkript-YAML" to sender
+					send "&6» &fAll languages of skript: &cEnglish" to sender
 					send "" to sender
 			arg 1 = "reload":
 				make console execute command "/sk reload HyperCosmetics"
@@ -1498,12 +1491,6 @@ command /hypercosmetics [<text>] [<text>]:
 					HyperCosmeticsHelp(console, "HyperCosmeticsCMD")
 				sender = player:
 					HyperCosmeticsOpenMenu(player, "OpenMenuMain")
-
-on command "/hypercosmetics" or "/hypercosmetics:hypercosmetics" or "hc" or "hypercosmetics:hc":
-	sender = player:
-		player doesn't have permission "hypercosmetics.hypercosmetics" or "hypercosmetics.*":
-			cancel event
-			HyperCosmeticsNoPermission(player)
 
 command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hgadgets
@@ -1542,7 +1529,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Firework&7." to player
 												else:
-													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													send "&4» &cThis gadget has been disabled by the server." to player
 									arg 2 = "bow-teleport":
 										player doesn't have permission "hypercosmetics.hgadgets.give.bowteleport" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1554,7 +1541,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to arrow named "&c&l↪ &7Ammunition"
 													send action bar "&7You have gived the gadget &6Bed-Teleport&7." to player
 												else:
-													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													send "&4» &cThis gadget has been disabled by the server." to player
 									arg 2 = "snowball":
 										player doesn't have permission "hypercosmetics.hgadgets.give.snowball" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1566,7 +1553,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Snowball&7." to player
 												else:
-													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													send "&4» &cThis gadget has been disabled by the server." to player
 									arg 2 = "lightning":
 										player doesn't have permission "hypercosmetics.hgadgets.give.lightning" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1578,7 +1565,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Lightning&7." to player
 												else:
-													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													send "&4» &cThis gadget has been disabled by the server." to player
 									arg 2 = "rocket":
 										player doesn't have permission "hypercosmetics.hgadgets.give.rocket" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1590,7 +1577,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 													set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 													send action bar "&7You have gived the gadget &6Rocket&7." to player
 												else:
-													send "&4| &8x &cThis gadget has been disabled by the server." to player
+													send "&4» &cThis gadget has been disabled by the server." to player
 								else:
 									player doesn't have permission "hypercosmetics.hgadgets.give.others" or "hypercosmetics.hgadgets.give.*" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
@@ -1606,7 +1593,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Firework &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														send "&4» &cThis gadget has been disabled by the server." to player
 											arg 2 = "bow-teleport":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1615,7 +1602,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to arrow named "&c&l↪ &7Ammunition"
 														send "&7You have gived the gadget &6Bow-Teleport &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														send "&4» &cThis gadget has been disabled by the server." to player
 											arg 2 = "snowball":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1624,7 +1611,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Snowball &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														send "&4» &cThis gadget has been disabled by the server." to player
 											arg 2 = "lightning":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1633,7 +1620,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of arg 3 to air
 														send "&7You have gived the gadget &6Lightning &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														send "&4» &cThis gadget has been disabled by the server." to player
 											arg 2 = "rocket":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1642,7 +1629,7 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 														set slot yaml value "cosmetics.gadgets.bow-teleport.ammunition-slot" from "config" of player to air
 														send action bar "&7You have gived the gadget &6Rocket&7." to player
 													else:
-														send "&4| &8x &cThis gadget has been disabled by the server." to player
+														send "&4» &cThis gadget has been disabled by the server." to player
 				arg 1 = "clear":
 					player doesn't have permission "hypercosmetics.hgadgets.clear" or "hypercosmetics.hgadgets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
@@ -1669,12 +1656,6 @@ command /hgadgets [<text>] [<text>] [<offline player>] [<text>]:
 					HyperCosmeticsCMDList(player, "Gadgets")
 		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
-
-on command "/hgadgets" or "/hypercosmetics:hgadgets":
-	sender = player:
-		player doesn't have permission "hypercosmetics.hgadgets" or "hypercosmetics.*":
-			cancel event
-			HyperCosmeticsNoPermission(player)
 
 command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hsuits
@@ -1716,7 +1697,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 													set player's boots to leather boots named "&fLeather Armor"
 													send action bar "&7You have gived the suit &6Leather Armor&7." to player
 												else:
-													send "&4| &8x &cThis suit has been disabled by the server." to player
+													send "&4» &cThis suit has been disabled by the server." to player
 									arg 2 = "chainmail-armor":
 										player doesn't have permission "hypercosmetics.hsuits.give.chainmailarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1731,7 +1712,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 													set player's boots to chainmail boots named "&fChainmail Armor"
 													send action bar "&7You have gived the suit &fChainmail Armor&7." to player
 												else:
-													send "&4| &8x &cThis suit has been disabled by the server." to player
+													send "&4» &cThis suit has been disabled by the server." to player
 									arg 2 = "iron-armor":
 										player doesn't have permission "hypercosmetics.hsuits.give.ironarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1746,7 +1727,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 													set player's boots to iron boots named "&fIron Armor"
 													send action bar "&7You have gived the suit &fIron Armor&7." to player
 												else:
-													send "&4| &8x &cThis suit has been disabled by the server." to player
+													send "&4» &cThis suit has been disabled by the server." to player
 									arg 2 = "golden-armor":
 										player doesn't have permission "hypercosmetics.hsuits.give.goldenarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1761,7 +1742,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 													set player's boots to golden boots named "&fGolden Armor"
 													send action bar "&7You have gived the suit &fGolden Armor&7." to player
 												else:
-													send "&4| &8x &cThis suit has been disabled by the server." to player
+													send "&4» &cThis suit has been disabled by the server." to player
 									arg 2 = "diamond-armor":
 										player doesn't have permission "hypercosmetics.hsuits.give.diamondarmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1776,7 +1757,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 													set player's boots to diamond boots named "&fDiamond Armor"
 													send action bar "&7You have gived the suit &fDiamond Armor&7." to player
 												else:
-													send "&4| &8x &cThis suit has been disabled by the server." to player
+													send "&4» &cThis suit has been disabled by the server." to player
 									arg 2 = "netherite-armor":
 										player doesn't have permission "hypercosmetics.hsuits.give.netheritearmor" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1791,7 +1772,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 													set player's boots to netherite boots named "&fNetherite Armor"
 													send action bar "&7You have gived the suit &fNetherite Armor&7." to player
 												else:
-													send "&4| &8x &cThis suit has been disabled by the server." to player
+													send "&4» &cThis suit has been disabled by the server." to player
 								else:
 									player doesn't have permission "hypercosmetics.hsuits.give.others" or "hypercosmetics.hsuits.give.*" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
@@ -1810,7 +1791,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 														set arg 3's boots to leather boots named "&fLeather Armor"
 														send "&7You have gived the suits &6Leather-Armor &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis suit has been disabled by the server." to player
+														send "&4» &cThis suit has been disabled by the server." to player
 											arg 2 = "chainmail-armor":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1822,7 +1803,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 														set arg 3's boots to chainmail boots named "&fChainmail Armor"
 														send "&7You have gived the suits &6Chainmail-Armor &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis suit has been disabled by the server." to player
+														send "&4» &cThis suit has been disabled by the server." to player
 											arg 2 = "iron-armor":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1834,7 +1815,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 														set arg 3's boots to iron boots named "&fIron Armor"
 														send "&7You have gived the suits &6Iron-Armor &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis suit has been disabled by the server." to player
+														send "&4» &cThis suit has been disabled by the server." to player
 											arg 2 = "golden-armor":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1846,7 +1827,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 														set arg 3's boots to golden boots named "&fGolden Armor"
 														send "&7You have gived the suits &6Golden-Armor &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis suit has been disabled by the server." to player
+														send "&4» &cThis suit has been disabled by the server." to player
 											arg 2 = "diamond-armor":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1858,7 +1839,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 														set arg 3's boots to diamond boots named "&fDiamond Armor"
 														send "&7You have gived the suits &6Diamond-Armor &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis suit has been disabled by the server." to player
+														send "&4» &cThis suit has been disabled by the server." to player
 											arg 2 = "netherite-armor":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -1870,7 +1851,7 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 														set arg 3's boots to netherite boots named "&fNetherite Armor"
 														send "&7You have gived the suits &6Netherite-Armor &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis suit has been disabled by the server." to player
+														send "&4» &cThis suit has been disabled by the server." to player
 				arg 1 = "clear":
 					player doesn't have permission "hypercosmetics.hsuits.clear" or "hypercosmetics.hsuits.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
@@ -1902,12 +1883,6 @@ command /hsuits [<text>] [<text>] [<offline player>] [<text>]:
 					HyperCosmeticsCMDList(player, "Suits")
 		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
-
-on command "/hsuits" or "/hypercosmetics:hsuits":
-	sender = player:
-		player doesn't have permission "hypercosmetics.hsuits" or "hypercosmetics.*":
-			cancel event
-			HyperCosmeticsNoPermission(player)
 
 command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hjoinquitmessages
@@ -1947,7 +1922,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message01} to true
 													send action bar "&7You have enabled this messages." to player
 												else:
-													send "&4| &8x &cThis messages has been disabled by the server." to player
+													send "&4» &cThis messages has been disabled by the server." to player
 									arg 2 = "message02":
 										player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.2" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1960,7 +1935,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message02} to true
 													send action bar "&7You have enabled this messages." to player
 												else:
-													send "&4| &8x &cThis messages has been disabled by the server." to player
+													send "&4» &cThis messages has been disabled by the server." to player
 									arg 2 = "message03":
 										player doesn't have permission "hypercosmetics.hjoinquitmessages.give.message.3" or "hypercosmetics.hjoinquitmessages.give.message.*" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -1973,7 +1948,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 													set {HyperCosmetics::%player's uuid%::JoinQuitMessages::message03} to true
 													send action bar "&7You have enabled this messages." to player
 												else:
-													send "&4| &8x &cThis messages has been disabled by the server." to player
+													send "&4» &cThis messages has been disabled by the server." to player
 								else:
 									player doesn't have permission "hypercosmetics.hjoinquitmessages.give.others" or "hypercosmetics.hjoinquitmessages.give.*" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
@@ -1990,7 +1965,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message01} to true
 														send "&7You have enabled the message &6Message01 &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis messages has been disabled by the server." to player
+														send "&4» &cThis messages has been disabled by the server." to player
 											arg 2 = "message02":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -2000,7 +1975,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message02} to true
 														send "&7You have enabled the message &6Message02 &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis messages has been disabled by the server." to player
+														send "&4» &cThis messages has been disabled by the server." to player
 											arg 2 = "message03":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -2010,7 +1985,7 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 														set {HyperCosmetics::%arg 3's uuid%::JoinQuitMessages::message03} to true
 														send "&7You have enabled the message &6Message03 &7for the player &6%arg 3%&7." to player
 													else:
-														send "&4| &8x &cThis messages has been disabled by the server." to player
+														send "&4» &cThis messages has been disabled by the server." to player
 				arg 1 = "clear":
 					player doesn't have permission "hypercosmetics.hjoinquitmessages.clear" or "hypercosmetics.hjoinquitmessages.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
@@ -2035,12 +2010,6 @@ command /hjoinquitmessages [<text>] [<text>] [<offline player>] [<text>]:
 					HyperCosmeticsCMDList(player, "JoinQuitMessages")
 		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
-
-on command "/hjoinquitmessages" or "/hypercosmetics:hjoinquitmessages":
-	sender = player:
-		player doesn't have permission "hypercosmetics.hjoinquitmessages" or "hypercosmetics.*":
-			cancel event
-			HyperCosmeticsNoPermission(player)
 
 command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 	aliases: hypercosmetics:hpets
@@ -2085,7 +2054,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 													yaml value "cosmetics.pets.king.effects" from "config" = true:
 														apply potion of strength to player for 100 years
 												else:
-													send "&4| &8x &cThis pets has been disabled by the server." to player
+													send "&4» &cThis pets has been disabled by the server." to player
 									arg 2 = "panda":
 										player doesn't have permission "hypercosmetics.hpets.give.panda" or "hypercosmetics.hpets.give.*" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -2101,7 +2070,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 													send action bar "&7You have enabled this pets&7." to player
 													HyperCosmeticsPetsGive(player, "&7Panda of &c%player%", player's location)
 												else:
-													send "&4| &8x &cThis pets has been disabled by the server." to player
+													send "&4» &cThis pets has been disabled by the server." to player
 									arg 2 = "brown-panda":
 										player doesn't have permission "hypercosmetics.hpets.give.brownpanda" or "hypercosmetics.hpets.give.*" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -2117,7 +2086,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 													send action bar "&7You have enabled this pets&7." to player
 													HyperCosmeticsPetsGive(player, "&7Brown Panda of &c%player%", player's location)
 												else:
-													send "&4| &8x &cThis pets has been disabled by the server." to player
+													send "&4» &cThis pets has been disabled by the server." to player
 									arg 2 = "slime":
 										player doesn't have permission "hypercosmetics.hpets.give.slime" or "hypercosmetics.hpets.give.*" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -2135,7 +2104,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 													yaml value "cosmetics.pets.slime.effects" from "config" = true:
 														apply potion of jump 2 to player for 100 years
 												else:
-													send "&4| &8x &cThis pets has been disabled by the server." to player
+													send "&4» &cThis pets has been disabled by the server." to player
 									arg 2 = "slime-blue":
 										player doesn't have permission "hypercosmetics.hpets.give.slimeblue" or "hypercosmetics.hpets.give.*" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 											HyperCosmeticsNoPermission(player)
@@ -2153,7 +2122,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 													yaml value "cosmetics.pets.slime.effects" from "config" = true:
 														apply potion of jump 2 to player for 100 years
 												else:
-													send "&4| &8x &cThis pets has been disabled by the server." to player
+													send "&4» &cThis pets has been disabled by the server." to player
 								else:
 									player doesn't have permission "hypercosmetics.pets.give.others" or "hypercosmetics.pets.give.*" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
@@ -2175,7 +2144,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 														yaml value "cosmetics.pets.king.effects" from "config" = true:
 															apply potion of strength to arg 3 for 100 years
 													else:
-														send "&4| &8x &cThis pets has been disabled by the server." to player
+														send "&4» &cThis pets has been disabled by the server." to player
 											arg 2 = "panda":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -2188,7 +2157,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 														send "&7You have enabled the pet &6Panda &7for the player &6%arg 3%&7." to player
 														HyperCosmeticsPetsGive(player, "&7Panda of &c%arg 3%", arg 3's location)
 													else:
-														send "&4| &8x &cThis pets has been disabled by the server." to player
+														send "&4» &cThis pets has been disabled by the server." to player
 											arg 2 = "brown-panda":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -2201,7 +2170,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 														send "&7You have enabled the pet &6Brown Panda &7for the player &6%arg 3%&7." to player
 														HyperCosmeticsPetsGive(player, "&7Brown Panda of &c%arg 3%", arg 3's location)
 													else:
-														send "&4| &8x &cThis pets has been disabled by the server." to player
+														send "&4» &cThis pets has been disabled by the server." to player
 											arg 2 = "slime":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -2216,7 +2185,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 														yaml value "cosmetics.pets.slime.effects" from "config" = true:
 															apply potion of jump 2 to arg 3 for 100 years
 													else:
-														send "&4| &8x &cThis pets has been disabled by the server." to player
+														send "&4» &cThis pets has been disabled by the server." to player
 											arg 2 = "slime-blue":
 												load "plugins/HyperCosmetics/config.yml"
 												yaml value "language" from "config" = "English":
@@ -2231,7 +2200,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 														yaml value "cosmetics.pets.slime.effects" from "config" = true:
 															apply potion of jump 2 to arg 3 for 100 years
 													else:
-														send "&4| &8x &cThis pets has been disabled by the server." to player
+														send "&4» &cThis pets has been disabled by the server." to player
 				arg 1 = "clear":
 					player doesn't have permission "hypercosmetics.pets.clear" or "hypercosmetics.pets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
@@ -2283,8 +2252,25 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 		sender = console:
 			HyperCosmeticsNoCommandConsole(console)
 
-on command "/hpets" or "/hypercosmetics:hpets":
+on command:
 	sender = player:
-		player doesn't have permission "hypercosmetics.hpets" or "hypercosmetics.*":
-			cancel event
-			HyperCosmeticsNoPermission(player)
+		command = "hpets" or "hypercosmetics:hpets":
+			player doesn't have permission "hypercosmetics.hpets" or "hypercosmetics.*":
+				cancel event
+				HyperCosmeticsNoPermission(player)
+		command = "hypercosmetics" or "hypercosmetics:hypercosmetics" or "hc" or "hypercosmetics:hc":
+			player doesn't have permission "hypercosmetics.hypercosmetics" or "hypercosmetics.*":
+				cancel event
+				HyperCosmeticsNoPermission(player)
+		command = "hgadgets" or "hypercosmetics:hgadgets":
+			player doesn't have permission "hypercosmetics.hgadgets" or "hypercosmetics.*":
+				cancel event
+				HyperCosmeticsNoPermission(player)
+		command = "hsuits" or "hypercosmetics:hsuits":
+			player doesn't have permission "hypercosmetics.hsuits" or "hypercosmetics.*":
+				cancel event
+				HyperCosmeticsNoPermission(player)
+		command = "hjoinquitmessages" or "hypercosmetics:hjoinquitmessages":
+			player doesn't have permission "hypercosmetics.hjoinquitmessages" or "hypercosmetics.*":
+				cancel event
+				HyperCosmeticsNoPermission(player)
