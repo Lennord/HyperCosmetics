@@ -1477,7 +1477,7 @@ command /hypercosmetics [<text>] [<text>]:
 					send "&6» &fName of skript: &cHyperCosmetics (Skript)" to sender
 					send "&6» &fLink of skript: &chttps://www.spigotmc.org/resources/hypercosmetics-skript-1-17-1-1-18-2.101432/" to sender
 					send "&6» &fDescription of skript: &cThis skript allows you to implement many types of cosmetics." to sender
-					send "&6» &fVersion of skript: &c0.0.7" to sender
+					send "&6» &fVersion of skript: &c0.0.8" to sender
 					send "&6» &fPlugin requirements: &cSkript&7, &cSkBee &7and &cSkript-YAML" to sender
 					send "&6» &fAll languages of skript: &cEnglish" to sender
 					send "" to sender
