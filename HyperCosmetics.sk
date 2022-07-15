@@ -2022,12 +2022,12 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 				arg 1 != "menu" or "give" or "clear" or "list":
 					HyperCosmeticsHelp(player, "HPetsCMD")
 				arg 1 = "menu":
-					player doesn't have permission "hypercosmetics.pets.openmenu" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+					player doesn't have permission "hypercosmetics.hpets.openmenu" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						HyperCosmeticsOpenMenu(player, "OpenMenuPetsMain")
 				arg 1 = "give":
-					player doesn't have permission "hypercosmetics.pets.give" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+					player doesn't have permission "hypercosmetics.hpets.give" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						arg 2 isn't set:
@@ -2124,7 +2124,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 												else:
 													send "&4» &cThis pets has been disabled by the server." to player
 								else:
-									player doesn't have permission "hypercosmetics.pets.give.others" or "hypercosmetics.pets.give.*" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+									player doesn't have permission "hypercosmetics.hpets.give.others" or "hypercosmetics.hpets.give.*" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 										HyperCosmeticsNoPermission(player)
 									else:
 										arg 3 is offline:
@@ -2202,7 +2202,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 													else:
 														send "&4» &cThis pets has been disabled by the server." to player
 				arg 1 = "clear":
-					player doesn't have permission "hypercosmetics.pets.clear" or "hypercosmetics.pets.*" or "hypercosmetics.*":
+					player doesn't have permission "hypercosmetics.hpets.clear" or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 						HyperCosmeticsNoPermission(player)
 					else:
 						arg 2 isn't set:
@@ -2224,7 +2224,7 @@ command /hpets [<text>] [<text>] [<offline player>] [<text>]:
 								delete {_HyperCosmetics::%player's uuid%::PetsLocation}
 								send action bar "&cYou have cleared all pets." to player
 						else:
-							player doesn't have permission "hypercosmetics.pets.clear.others"  or "hypercosmetics.pets.*" or "hypercosmetics.*":
+							player doesn't have permission "hypercosmetics.hpets.clear.others"  or "hypercosmetics.hpets.*" or "hypercosmetics.*":
 								HyperCosmeticsNoPermission(player)
 							else:
 								arg 2 parsed as offline player is offline:
